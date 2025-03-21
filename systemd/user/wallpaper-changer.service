@@ -1,0 +1,10 @@
+[Unit]
+Description=Wallpaper Changer
+After=graphical.target
+
+[Service]
+ExecStart=%h/.config/hypr/wallpaper-changer.sh
+Restart=always
+
+[Install]
+WantedBy=default.target
