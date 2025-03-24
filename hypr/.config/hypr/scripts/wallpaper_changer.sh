@@ -4,8 +4,8 @@
 # It selects a random image from a specified directory and sets it as the wallpaper using the swww tool. If no wallpapers are found, it falls back to a default wallpaper or use a blank one.
 # The script runs in an infinite loop, ensuring continuous wallpaper rotation.
 
-WALLPAPERS_DIR="$HOME/.config/backgrounds"
-CURRENT_WALLPAPER_DIR="$HOME/.config/backgrounds/current"
+WALLPAPERS_DIR="$HOME/.config/wallpapers"
+CURRENT_WALLPAPER_DIR="$HOME/.config/wallpapers/current"
 FALLBACK_WALLPAPER=$(find "$WALLPAPERS_DIR" -type f -iname "default.*" | head -n 1)
 
 # Create all needed directories if they don't exists
@@ -22,23 +22,22 @@ set_wallpaper() {
 
   # check if the command to set the wallpaper with swww is successful
   if ! swww img "$wallpaper" --transition-type outer; then
-    notify-send "👾⚠️ Outch ! SWWW (wallpaper) issue" "No wallpaper found. Fix me or you will have that shitty black wallpaper all day long."
-    echo "👾⚠️ No wallpaper found. Fix me or you will have that shitty black wallpaper all day long"
+    notify-send "⚠️ Outch ! SWWW (wallpaper) issue" "No wallpaper found. Fix me or you will only have the default one."
+    echo "⚠️ No wallpaper found. Fix me or you will only have the default one."
 
     # check if the fallback wallpaper file exists.
     # if it does, set it as the wallpaper
     # otherwise, use a blank one
     [ -f "$FALLBACK_WALLPAPER" ] && swww img "$FALLBACK_WALLPAPER" || swww clear
-  else
-    echo "👾 A new wallpaper has been set."
+    return 1
   fi
 
-  echo "👾 A new wallpaper has been set."
+  echo " A new wallpaper has been set."
 }
 
 while true; do
   # get all available wallpapers
-  mapfile -t wallpapers < <(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.gif" -o -iname "*.webp" \))
+  readarray -t wallpapers < <(find "$WALLPAPERS_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.gif" -o -iname "*.webp" \))
 
   # if there are no available wallpapers, use the default one ;
   # and if there is no default, use a blank one.
@@ -47,8 +46,8 @@ while true; do
       set_wallpaper "$FALLBACK_WALLPAPER"
     else
       swww clear
-      notify-send "👾⚠️ Outch ! SWWW (wallpaper) issue" "No wallpaper found. Fix me or you will have that shitty black wallpaper all day long."
-      echo "👾⚠️ No wallpaper found. Fix me or you will have that shitty black wallpaper all day long"
+      notify-send "⚠️ Outch ! SWWW (wallpaper) issue" "No wallpaper found. Fix me or you will have that shitty black wallpaper all day long."
+      echo "⚠️ No wallpaper found. Fix me or you will have that shitty black wallpaper all day long"
     fi
 
     # wait for an hour and try again
