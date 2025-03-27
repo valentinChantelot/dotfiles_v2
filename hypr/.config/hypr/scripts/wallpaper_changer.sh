@@ -1,64 +1,42 @@
 #!/usr/bin/bash
 
-# This script automatically changes the desktop wallpaper every hour.
-# It selects a random image from a specified directory and sets it as the wallpaper using the swww tool. If no wallpapers are found, it falls back to a default wallpaper or use a blank one.
-# The script runs in an infinite loop, ensuring continuous wallpaper rotation.
+# Automatically rotates desktop wallpapers hourly using swww
+# Supports fallback to default wallpaper or blank screen
 
 WALLPAPERS_DIR="$HOME/.config/wallpapers"
 CURRENT_WALLPAPER_DIR="$HOME/.config/wallpapers/current"
 FALLBACK_WALLPAPER=$(find "$WALLPAPERS_DIR" -type f -iname "default.*" | head -n 1)
 
-# Create all needed directories if they don't exists
+# Ensure necessary directories exist
 mkdir -p "$CURRENT_WALLPAPER_DIR"
 
 set_wallpaper() {
-  local wallpaper=$1
+    local wallpaper=$1
 
-  # Remove current wallpaper
-  rm -f "$CURRENT_WALLPAPER_DIR"/*
+    # Prepare current wallpaper directory
+    rm -f "$CURRENT_WALLPAPER_DIR"/*
+    cp "$wallpaper" "$CURRENT_WALLPAPER_DIR/$(basename "$wallpaper")"
 
-  # Copy the new current wallpaper
-  cp "$wallpaper" "$CURRENT_WALLPAPER_DIR/$(basename "$wallpaper")"
-
-  # check if the command to set the wallpaper with swww is successful
-  if ! swww img "$wallpaper" --transition-type outer; then
-    notify-send "⚠️ Outch ! SWWW (wallpaper) issue" "No wallpaper found. Fix me or you will only have the default one."
-    echo "⚠️ No wallpaper found. Fix me or you will only have the default one."
-
-    # check if the fallback wallpaper file exists.
-    # if it does, set it as the wallpaper
-    # otherwise, use a blank one
-    [ -f "$FALLBACK_WALLPAPER" ] && swww img "$FALLBACK_WALLPAPER" || swww clear
-    return 1
-  fi
-
-  echo " A new wallpaper has been set."
-}
-
-while true; do
-  # get all available wallpapers
-  readarray -t wallpapers < <(find "$WALLPAPERS_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.gif" -o -iname "*.webp" \))
-
-  # if there are no available wallpapers, use the default one ;
-  # and if there is no default, use a blank one.
-  if [ "${#wallpapers[@]}" -eq 0 ]; then
-    if [ -f "$FALLBACK_WALLPAPER" ]; then
-      set_wallpaper "$FALLBACK_WALLPAPER"
-    else
-      swww clear
-      notify-send "⚠️ Outch ! SWWW (wallpaper) issue" "No wallpaper found. Fix me or you will have that shitty black wallpaper all day long."
-      echo "⚠️ No wallpaper found. Fix me or you will have that shitty black wallpaper all day long"
+    # Attempt to set wallpaper with swww
+    if ! swww img "$wallpaper" --transition-type outer; then
+        # Fallback mechanism
+        notify-send "⚠️ Wallpaper Change Failed" "Switching to default or blank"
+        echo "⚠️ Wallpaper Change Failed" "Switching to default or blank"
+        [ -f "$FALLBACK_WALLPAPER" ] && swww img "$FALLBACK_WALLPAPER" || swww clear
+        return 1
     fi
 
-    # wait for an hour and try again
+    echo "Wallpaper updated successfully"
+}
+
+# Infinite loop for wallpaper rotation
+while true; do
+    # Select a random wallpaper from supported image types
+    RANDOM_WALLPAPER=$(find "$WALLPAPERS_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | shuf -n 1)
+
+    # Set the wallpaper
+    set_wallpaper "$RANDOM_WALLPAPER"
+
+    # Wait for an hour before next change
     sleep 3600
-    continue
-  fi
-
-  # get and set a random wallpaper in the available wallpaper list
-  RANDOM_WALLPAPER=$(printf "%s\n" "${wallpapers[@]}" | shuf -n 1)
-  set_wallpaper "$RANDOM_WALLPAPER"
-
-  # wait for an hour and rerun the script
-  sleep 3600
 done
