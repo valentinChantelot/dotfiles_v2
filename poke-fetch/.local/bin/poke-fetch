@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Exécuter seulement dans un shell interactif
+[[ $- != *i* ]] && exit 0
+
+# Vérifier que fastfetch est présent
+if ! command -v fastfetch >/dev/null 2>&1; then
+  echo "⚠️ fastfetch n'est pas installé." >&2
+  exit 1
+fi
+
+# Vérifier que pokemon-colorscripts est présent, sinon fallback fastfetch
+if ! command -v pokemon-colorscripts >/dev/null 2>&1; then
+  fastfetch
+  exit 0
+fi
+
+# Déterminer si --no-title est dispo
+if pokemon-colorscripts --help 2>&1 | grep -q -- '--no-title'; then
+  POKE_CMD=(pokemon-colorscripts -r --no-title)
+else
+  POKE_CMD=(pokemon-colorscripts -r)
+fi
+
+# Générer le Pokémon
+POKE_OUTPUT="$("${POKE_CMD[@]}" 2>/dev/null || true)"
+
+# Utiliser --data-raw si dispo, sinon fallback fichier temporaire
+if fastfetch --help 2>&1 | grep -q -- '--data-raw'; then
+  fastfetch --data-raw "$POKE_OUTPUT"
+else
+  tmpfile=$(mktemp)
+  printf '%s\n' "$POKE_OUTPUT" > "$tmpfile"
+  fastfetch --file-raw "$tmpfile"
+  rm -f "$tmpfile"
+fi

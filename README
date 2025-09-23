@@ -1,0 +1,14 @@
+# 🐉 poke-fetch
+
+Un petit wrapper autour de [fastfetch](https://github.com/fastfetch-cli/fastfetch) et [pokemon-colorscripts](https://gitlab.com/phoneybadger/pokemon-colorscripts)  
+→ Affiche les infos système **avec un Pokémon random en logo** ✨
+
+---
+
+## Installation
+
+Assure-toi d’avoir `fastfetch` et `pokemon-colorscripts` installés :
+
+```bash
+yay -S fastfetch
+yay -S pokemon-colorscripts-git
