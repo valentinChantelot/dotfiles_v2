@@ -1,25 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "=== DEBUG poke-fetch ===" >&2
-echo "Mode shell: $-" >&2
-echo "TERM: ${TERM:-undefined}" >&2
-echo "Shell flags: $-" >&2
-echo "SSH_CLIENT: ${SSH_CLIENT:-undefined}" >&2
-echo "DISPLAY: ${DISPLAY:-undefined}" >&2
-echo "VSCODE_INJECTION: ${VSCODE_INJECTION:-undefined}" >&2
-echo "PWD: $PWD" >&2
-echo "========================" >&2
-
-# Do not execute in non interactive shell
-[[ $- != *i* ]] && exit 0
-
-# Do not execute in VSCODE shell
-# [[ -n "$VSCODE_INJECTION" ]] && exit 0
-
-# Vérifier les dépendances
+# Check fastfetch dependency
 command -v fastfetch >/dev/null 2>&1 || {
-    echo "❌ fastfetch introuvable" >&2
+    echo "❌ fastfetch is not installed" >&2
     exit 1
 }
 
