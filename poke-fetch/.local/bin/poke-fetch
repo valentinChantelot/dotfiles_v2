@@ -9,9 +9,9 @@ command -v fastfetch >/dev/null 2>&1 || {
 
 if command -v pokemon-colorscripts >/dev/null 2>&1; then
     if pokemon-colorscripts --help 2>&1 | grep -q -- '--no-title'; then
-        pokemon-colorscripts -r --no-title | fastfetch --file-raw -
+        pokemon-colorscripts -r 1-2 --no-title | fastfetch --file-raw -
     else
-        pokemon-colorscripts -r | fastfetch --file-raw -
+        pokemon-colorscripts -r 1-2 --no-title | fastfetch --file-raw -
     fi
 else
     fastfetch
