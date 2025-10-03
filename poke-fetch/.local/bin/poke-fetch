@@ -1,17 +1,34 @@
 #!/usr/bin/env bash
+
 set -euo pipefail
 
-# Check fastfetch dependency
+# check fastfetch dependency
 command -v fastfetch >/dev/null 2>&1 || {
     echo "❌ fastfetch is not installed" >&2
     exit 1
 }
 
-if command -v pokemon-colorscripts >/dev/null 2>&1; then
-    if pokemon-colorscripts --help 2>&1 | grep -q -- '--no-title'; then
-        pokemon-colorscripts -r 1-2 --no-title | fastfetch --file-raw -
+if command -v pokemon-colorscripts >/dev/null 2>&1 && command -v fastfetch >/dev/null 2>&1; then
+    fastfetch_cmd=(fastfetch --file-raw /dev/stdin --logo-padding-left 4)
+
+    # hardcoded, depends on the config - maybe a future improvment 
+    fastfetch_height=15
+    
+    # get generated pokemon height
+    pokemon_output=$(pokemon-colorscripts -r 1-2 --no-title)
+    pokemon_lines=$(echo "$pokemon_output" | wc -l)
+    
+    if (( fastfetch_height > pokemon_lines )); then
+        padding=$(( (fastfetch_height - pokemon_lines) / 2 ))
+        
+        {
+            for ((i=0; i<padding; i++)); do
+                echo
+            done
+            echo "$pokemon_output"
+        } | "${fastfetch_cmd[@]}"
     else
-        pokemon-colorscripts -r 1-2 --no-title | fastfetch --file-raw -
+        echo "$pokemon_output" | "${fastfetch_cmd[@]}"
     fi
 else
     fastfetch
