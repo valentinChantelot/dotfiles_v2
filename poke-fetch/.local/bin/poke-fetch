@@ -1,35 +1,51 @@
 #!/usr/bin/env bash
-
 set -euo pipefail
 
-# check fastfetch dependency
+# Default parameters
+POKE_CMD="pokemon-colorscripts -r --no-title"
+FASTFETCH_CMD="fastfetch --file-raw /dev/stdin --logo-padding-left 4"
+FASTFETCH_HEIGHT=15
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --poke)
+            POKE_CMD="$2"
+            shift 2
+            ;;
+        --help|-h)
+            echo "Usage: poke-fetch [--poke \"cmd\"]"
+            echo "  --poke   override pokemon-colorscripts command"
+            exit 0
+            ;;
+        *)
+            echo "Unknown option: $1" >&2
+            exit 1
+            ;;
+    esac
+done
+
+# Check dependencies
 command -v fastfetch >/dev/null 2>&1 || {
-    echo "❌ fastfetch is not installed" >&2
+    echo "⚠ fastfetch is not installed" >&2
     exit 1
 }
+command -v pokemon-colorscripts >/dev/null 2>&1 || {
+    echo "⚠ pokemon-colorscripts not installed, running fastfetch only" >&2
+    exec fastfetch
+}
 
-if command -v pokemon-colorscripts >/dev/null 2>&1 && command -v fastfetch >/dev/null 2>&1; then
-    fastfetch_cmd=(fastfetch --file-raw /dev/stdin --logo-padding-left 4)
+# Generate pokemon
+pokemon_output=$(eval "$POKE_CMD")
+pokemon_lines=$(echo "$pokemon_output" | wc -l)
 
-    # hardcoded, depends on the config - maybe a future improvment 
-    fastfetch_height=15
-    
-    # get generated pokemon height
-    pokemon_output=$(pokemon-colorscripts -r 1-2 --no-title)
-    pokemon_lines=$(echo "$pokemon_output" | wc -l)
-    
-    if (( fastfetch_height > pokemon_lines )); then
-        padding=$(( (fastfetch_height - pokemon_lines) / 2 ))
-        
-        {
-            for ((i=0; i<padding; i++)); do
-                echo
-            done
-            echo "$pokemon_output"
-        } | "${fastfetch_cmd[@]}"
-    else
-        echo "$pokemon_output" | "${fastfetch_cmd[@]}"
-    fi
+# Center pokemon vertically when possible.
+if (( FASTFETCH_HEIGHT > pokemon_lines )); then
+    padding=$(( (FASTFETCH_HEIGHT - pokemon_lines) / 2 ))
+    {
+        for ((i=0; i<padding; i++)); do echo; done
+        echo "$pokemon_output"
+    } | $FASTFETCH_CMD
 else
-    fastfetch
+    echo "$pokemon_output" | $FASTFETCH_CMD
 fi
