@@ -2,9 +2,8 @@
 set -euo pipefail
 
 # Default parameters
-POKE_CMD="pokemon-colorscripts -r --no-title"
+POKE_CMD="pokeget random --hide-name"
 FASTFETCH_CMD="fastfetch --file-raw /dev/stdin --logo-padding-left 4"
-FASTFETCH_HEIGHT=15
 
 # Parse arguments
 while [[ $# -gt 0 ]]; do
@@ -30,18 +29,19 @@ command -v fastfetch >/dev/null 2>&1 || {
     echo "⚠ fastfetch is not installed" >&2
     exit 1
 }
-command -v pokemon-colorscripts >/dev/null 2>&1 || {
-    echo "⚠ pokemon-colorscripts not installed, running fastfetch only" >&2
-    exec fastfetch
-}
 
-# Generate pokemon
-pokemon_output=$(eval "$POKE_CMD")
-pokemon_lines=$(echo "$pokemon_output" | wc -l)
 
-# Center pokemon vertically when possible.
-if (( FASTFETCH_HEIGHT > pokemon_lines )); then
-    padding=$(( (FASTFETCH_HEIGHT - pokemon_lines) / 2 ))
+if ! pokemon_output=$(eval "$POKE_CMD" 2>/dev/null) || [[ -z "$pokemon_output" ]]; then
+    exec fastfetch -c /usr/share/fastfetch/presets/examples/20.jsonc
+fi
+
+# Compute heights
+fastfetch_height=$(fastfetch --logo none | wc -l)
+pokemon_height=$(echo "$pokemon_output" | wc -l)
+
+# Center pokemon vertically when smaller than fetch
+if (( fastfetch_height > pokemon_height )); then
+    padding=$(( (fastfetch_height - pokemon_height) / 2 ))
     {
         for ((i=0; i<padding; i++)); do echo; done
         echo "$pokemon_output"
