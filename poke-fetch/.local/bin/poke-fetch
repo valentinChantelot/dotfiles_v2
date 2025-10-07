@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Default parameters
 POKE_CMD="pokeget random --hide-name"
-FASTFETCH_CMD="fastfetch --file-raw /dev/stdin --logo-padding-left 4"
+FASTFETCH_CMD="fastfetch --file-raw /dev/stdin --logo-padding-left 4 --logo-padding-right 4"
 
 # Parse arguments
 while [[ $# -gt 0 ]]; do
@@ -26,12 +26,34 @@ done
 
 # Check dependencies
 command -v fastfetch >/dev/null 2>&1 || {
-    echo "⚠ fastfetch is not installed" >&2
+    echo "✗ fastfetch is not installed" >&2
     exit 1
 }
 
+# Extract the binary name from POKE_CMD
+pokemon_cmd_binary=$(echo "$POKE_CMD" | awk '{print $1}')
 
-if ! pokemon_output=$(eval "$POKE_CMD" 2>/dev/null) || [[ -z "$pokemon_output" ]]; then
+# Check if the pokemon command exists
+if ! command -v "$pokemon_cmd_binary" >/dev/null 2>&1; then
+    echo -e "✗ $pokemon_cmd_binary is not installed, running fastfetch only" >&2
+    exec fastfetch -c /usr/share/fastfetch/presets/examples/20.jsonc
+fi
+
+# Check if the pokemon command produces valid output (contains ANSI colors or is multi-line)
+set +e
+pokemon_output=$(eval "$POKE_CMD" 2>&1)
+pokemon_exit_code=$?
+set -e
+
+if [[ $pokemon_exit_code -ne 0 ]] || [[ -z "$pokemon_output" ]] || {
+    [[ "$pokemon_output" != *$'\033'* ]] && [[ "$pokemon_output" != *$'\n'* ]]
+}; then
+    if [[ -n "$pokemon_output" ]]; then
+        echo -e "✗ pokemon command failed: $pokemon_output" >&2
+    else
+        echo -e "✗ pokemon command produced no output (exit code: $pokemon_exit_code)" >&2
+    fi
+    echo -e "Running fastfetch only" >&2
     exec fastfetch -c /usr/share/fastfetch/presets/examples/20.jsonc
 fi
 
