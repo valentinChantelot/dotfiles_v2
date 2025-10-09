@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Default parameters
-POKE_CMD="pokeget random --hide-name"
+POKE_CMD="pokeget kanto --hide-name"
 FASTFETCH_CMD="fastfetch --file-raw /dev/stdin --logo-padding-left 4 --logo-padding-right 4"
 
 # Parse arguments
