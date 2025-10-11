@@ -1,4 +1,18 @@
+# WebApp Installer using Chromium as browser
+# Updated version of the Omarchy script : https://github.com/basecamp/omarchy/blob/master/bin/omarchy-webapp-install
+
 #!/bin/bash
+
+# --- Check dependencies
+if ! command -v chromium &>/dev/null; then
+  echo "Chromium not found. Please install it first."
+  exit 1
+fi
+
+if ! command -v curl &>/dev/null; then
+  echo "curl is required but not installed."
+  exit 1
+fi
 
 if [ "$#" -lt 3 ]; then
   echo -e "\e[32mLet's create a new web app you can start with the app launcher.\n\e[0m"
@@ -41,7 +55,7 @@ fi
 if [[ -n $CUSTOM_EXEC ]]; then
   EXEC_COMMAND="$CUSTOM_EXEC"
 else
-  EXEC_COMMAND="omarchy-launch-webapp $APP_URL"
+  EXEC_COMMAND="chromium --app=$APP_URL --user-data-dir=%h/.local/share/webapps/$APP_NAME"
 fi
 
 # Create application .desktop file
@@ -67,5 +81,5 @@ fi
 chmod +x "$DESKTOP_FILE"
 
 if [[ $INTERACTIVE_MODE == true ]]; then
-  echo -e "You can now find $APP_NAME using the app launcher (SUPER + SPACE)\n"
+  echo -e "You can now find $APP_NAME using the app launcher (SUPER + r)\n"
 fi
