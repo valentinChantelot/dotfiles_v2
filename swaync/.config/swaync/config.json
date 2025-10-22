@@ -38,5 +38,14 @@
     "backlight": {
       "label": "☀️ Brightness"
     }
+  },
+  "buttons-grid": {
+    "actions": [
+      {
+        "label": "",
+        "class": "dino-button",
+        "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
+      }
+    ]
   }
 }
