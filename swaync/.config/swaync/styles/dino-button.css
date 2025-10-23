@@ -1,19 +1,9 @@
-button:first-child  {
+flowboxchild > button:first-child  {
   background-image: url("../icons/downasaur.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 24px 24px;
-  min-width: 36px;
+  max-width: 26px;
   min-height: 36px;
-  border-radius: 8px;
   background-color: transparent;
-}
-
-button:first-child:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  transition: background-color 100ms ease;
-}
-
-button:first-child:active{
-  background-color: rgba(255, 255, 255, 0.2);
 }

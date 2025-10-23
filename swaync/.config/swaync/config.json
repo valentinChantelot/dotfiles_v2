@@ -36,10 +36,30 @@
       "label": "🔊 Volume"
     },
     "buttons-grid": {
+      "buttons-per-row": 6,
       "actions": [
         {
           "label": "",
-          "id": "dino-button",
+          "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
+        },
+        {
+          "label": "⚠️",
+          "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
+        },
+        {
+          "label": "⚠️",
+          "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
+        },
+        {
+          "label": "⚠️",
+          "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
+        },
+        {
+          "label": "⚠️",
+          "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
+        },
+        {
+          "label": "⚠️",
           "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
         }
       ]
