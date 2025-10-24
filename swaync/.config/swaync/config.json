@@ -1,5 +1,5 @@
 {
-  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "$schema": "./configSchema.json",
   "positionX": "right",
   "positionY": "top",
   "layer": "overlay",
@@ -43,23 +43,23 @@
           "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
         },
         {
-          "label": "⚠️",
+          "label": "",
           "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
         },
         {
-          "label": "⚠️",
+          "label": "",
           "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
         },
         {
-          "label": "⚠️",
+          "label": "",
           "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
         },
         {
-          "label": "⚠️",
+          "label": "",
           "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
         },
         {
-          "label": "⚠️",
+          "label": "",
           "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
         }
       ]

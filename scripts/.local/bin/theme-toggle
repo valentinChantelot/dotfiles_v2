@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -e
+
+THEMES_DIR="$HOME/.config/themes"
+CURRENT_LINK="$THEMES_DIR/current"
+
+CUR=$(readlink "$CURRENT_LINK")
+if [[ "$CUR" == *"/dark" ]]; then
+    TARGET="light"
+else
+    TARGET="dark"
+fi
+
+ln -sfn "$THEMES_DIR/$TARGET" "$CURRENT_LINK"
+
+if command -v swaync-client &>/dev/null; then
+  swaync-client -rs
+fi
+
+if command -v hyprctl &>/dev/null; then
+  hyprctl reload
+fi
