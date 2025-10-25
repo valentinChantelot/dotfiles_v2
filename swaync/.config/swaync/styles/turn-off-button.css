@@ -1,5 +1,5 @@
-.widget-buttons-grid > flowbox > flowboxchild:nth-child(1) > button  {
-  background-image: url("../icons/downasaur.svg");
+.widget-buttons-grid > flowbox > flowboxchild:nth-child(6) > button  {
+  background-image: url("../icons/human-run.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 24px 24px;

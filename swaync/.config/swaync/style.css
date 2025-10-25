@@ -1,4 +1,9 @@
 @import url("styles/dino-button.css");
+@import url("styles/theme-button.css");
+@import url("styles/dotfiles-button.css");
+@import url("styles/vpn-button.css");
+@import url("styles/lock-button.css");
+@import url("styles/turn-off-button.css");
 
 :root {
   --cc-bg: rgba(46, 46, 46, 1);
@@ -29,7 +34,6 @@
   --group-collapse-transition: var(--group-collapse-tranistion);
 }
 
-/* Fallback for older CSS themes */
 /* Fallback for older CSS themes */
 @define-color cc-bg rgba(46, 46, 46, 0.7);
 @define-color noti-border-color rgba(255, 255, 255, 0.15);
