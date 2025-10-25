@@ -1,0 +1,27 @@
+@import url("dino-button.css");
+@import url("theme-button.css");
+@import url("dotfiles-button.css");
+@import url("vpn-button.css");
+@import url("lock-button.css");
+@import url("turn-off-button.css");
+
+.widget-buttons-grid,
+.widget-buttons-grid > flowbox,
+.widget-buttons-grid > flowbox > flowboxchild {
+    margin: 0;
+    padding: 0; 
+}
+
+.widget-buttons-grid {
+    border: solid 2px white;
+    margin-bottom: 64px;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px 24px;
+    max-width: 26px;
+    min-height: 36px;
+    background-color: transparent;
+}

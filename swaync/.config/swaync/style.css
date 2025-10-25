@@ -1,12 +1,8 @@
-@import url("styles/dino-button.css");
-@import url("styles/theme-button.css");
-@import url("styles/dotfiles-button.css");
-@import url("styles/vpn-button.css");
-@import url("styles/lock-button.css");
-@import url("styles/turn-off-button.css");
+@import url("styles/buttons-grid/widget-buttons-grid.css");
+@import url("styles/notifications/widget-title.css");
 
 :root {
-  --cc-bg: rgba(46, 46, 46, 1);
+  --cc-bg: rgb(22, 22, 22);
   --noti-border-color: rgba(255, 255, 255, 0.15);
   --noti-bg: 48, 48, 48;
   --noti-bg-alpha: 0.8;
@@ -324,7 +320,7 @@ notificationwindow, blankwindow, blankwindow {
 }
 
 .control-center {
-  /* The Control Center which contains the old notifications + widgets */
+  padding: 52px 32px;
   background: var(--cc-bg);
   color: var(--text-color);
   border-radius: var(--border-radius);
@@ -369,21 +365,12 @@ notificationwindow, blankwindow, blankwindow {
 
 /*** Widgets ***/
 .widget {
-  margin: 8px;
-  padding: 8px;
+  /* margin: 8px;
+  padding: 8px; */
   border-radius: var(--border-radius);
 }
 
-/* Title widget */
-.widget-title > label {
-  margin-right: 8px;
-  font-size: 1.5rem;
-}
 
-.widget-title > button {
-  margin-left: 8px;
-  border-radius: var(--border-radius);
-}
 
 /* DND widget */
 .widget-dnd label {

@@ -1,9 +1,0 @@
-.widget-buttons-grid > flowbox > flowboxchild:nth-child(5) > button  {
-  background-image: url("../icons/lock.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 24px 24px;
-  max-width: 26px;
-  min-height: 36px;
-  background-color: transparent;
-}
