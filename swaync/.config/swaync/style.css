@@ -2,6 +2,9 @@
 @import url("styles/notifications/widget-title.css");
 
 :root {
+  --font-family-highlight: "BigBlueTerm437 Nerd Font";
+  --font-family: "Terminess Nerd Font";
+
   --cc-bg: rgb(22, 22, 22);
   --noti-border-color: rgba(255, 255, 255, 0.15);
   --noti-bg: 48, 48, 48;
