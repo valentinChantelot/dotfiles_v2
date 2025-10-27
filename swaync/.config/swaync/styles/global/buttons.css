@@ -1,0 +1,23 @@
+button {
+  min-width: 26px;
+  min-height: 26px;
+
+  padding: 6px;
+
+  font-family: var(--font-family);
+  font-weight: bold;
+  font-size: 12px;
+
+  border-radius: var(--border-radius);
+
+  /* in case we have a no-label button with background image */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px 24px;
+  background-color: transparent;
+}
+
+button:hover {
+  -gtk-icon-filter: none;
+  background-color: var(--noti-bg-hover);
+}

@@ -1,14 +1,13 @@
 .widget-title {
-    margin: 0;
-    padding: 0; 
+  margin: 0;
+  padding: 0;
 }
 
 .widget-title > label {
   font-family: var(--font-family-highlight);
-  font-size: 1.5rem;
+  font-size: 24px;
 }
 
-.widget-title > button {
-  /* margin-left: 8px; */
-  border-radius: var(--border-radius);
+.widget-title > button.control-center-clear-all {
+  background-image: url("../../icons/trash.svg");
 }

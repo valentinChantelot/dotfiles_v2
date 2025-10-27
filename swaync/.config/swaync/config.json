@@ -16,24 +16,12 @@
   "transition-time": 200,
   "hide-on-clear": false,
   "hide-on-action": true,
-  "widgets": [
-    "buttons-grid",
-    "title",
-    "dnd",
-    "volume",
-    "notifications"
-  ],
+  "widgets": ["buttons-grid", "title", "notifications"],
   "widget-config": {
     "title": {
       "text": "Notifications",
       "clear-all-button": true,
-      "button-text": "Clear All"
-    },
-    "dnd": {
-      "text": "Do Not Disturb"
-    },
-    "volume": {
-      "label": "🔊 Volume"
+      "button-text": ""
     },
     "buttons-grid": {
       "buttons-per-row": 6,

@@ -1,4 +1,7 @@
+@import url("styles/global/buttons.css");
+
 @import url("styles/buttons-grid/widget-buttons-grid.css");
+
 @import url("styles/notifications/widget-title.css");
 
 :root {
@@ -47,7 +50,9 @@
 @define-color text-color rgb(255, 255, 255);
 @define-color text-color-disabled rgb(150, 150, 150);
 @define-color bg-selected rgb(0, 128, 255);
-notificationwindow, blankwindow, blankwindow {
+notificationwindow,
+blankwindow,
+blankwindow {
   background: transparent;
 }
 
@@ -107,7 +112,10 @@ notificationwindow, blankwindow, blankwindow {
   /* Critical Priority Notification */
 }
 
-.notification-row .notification-background .notification .notification-default-action {
+.notification-row
+  .notification-background
+  .notification
+  .notification-default-action {
   /* The large action that also displays the notification summary and body */
   padding: 4px;
   margin: 0;
@@ -119,24 +127,39 @@ notificationwindow, blankwindow, blankwindow {
   border-radius: var(--border-radius);
 }
 
-.notification-row .notification-background .notification .notification-default-action:hover {
+.notification-row
+  .notification-background
+  .notification
+  .notification-default-action:hover {
   -gtk-icon-filter: none;
   background: var(--noti-bg-hover);
 }
 
-.notification-row .notification-background .notification .notification-default-action:not(:only-child) {
+.notification-row
+  .notification-background
+  .notification
+  .notification-default-action:not(:only-child) {
   /* When alternative actions are visible */
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
 
-.notification-row .notification-background .notification .notification-default-action .notification-content {
+.notification-row
+  .notification-background
+  .notification
+  .notification-default-action
+  .notification-content {
   background: transparent;
   border-radius: var(--border-radius);
   padding: 0;
 }
 
-.notification-row .notification-background .notification .notification-default-action .notification-content .image {
+.notification-row
+  .notification-background
+  .notification
+  .notification-default-action
+  .notification-content
+  .image {
   /* Notification Primary Image */
   -gtk-icon-filter: none;
   -gtk-icon-size: var(--notification-icon-size);
@@ -145,7 +168,12 @@ notificationwindow, blankwindow, blankwindow {
   margin: 4px;
 }
 
-.notification-row .notification-background .notification .notification-default-action .notification-content .app-icon {
+.notification-row
+  .notification-background
+  .notification
+  .notification-default-action
+  .notification-content
+  .app-icon {
   /* Notification app icon (only visible when the primary image is set) */
   -gtk-icon-filter: none;
   -gtk-icon-size: var(--notification-app-icon-size);
@@ -153,12 +181,24 @@ notificationwindow, blankwindow, blankwindow {
   margin: 6px;
 }
 
-.notification-row .notification-background .notification .notification-default-action .notification-content .text-box label {
+.notification-row
+  .notification-background
+  .notification
+  .notification-default-action
+  .notification-content
+  .text-box
+  label {
   /* Fixes base GTK 4 CSS setting a filter of opacity 50% for some odd reason */
   filter: none;
 }
 
-.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary {
+.notification-row
+  .notification-background
+  .notification
+  .notification-default-action
+  .notification-content
+  .text-box
+  .summary {
   /* Notification summary/title */
   font-size: var(--font-size-summary);
   font-weight: bold;
@@ -167,7 +207,13 @@ notificationwindow, blankwindow, blankwindow {
   text-shadow: none;
 }
 
-.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .time {
+.notification-row
+  .notification-background
+  .notification
+  .notification-default-action
+  .notification-content
+  .text-box
+  .time {
   /* Notification time-ago */
   font-size: var(--font-size-summary);
   font-weight: bold;
@@ -177,7 +223,13 @@ notificationwindow, blankwindow, blankwindow {
   margin-right: 30px;
 }
 
-.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body {
+.notification-row
+  .notification-background
+  .notification
+  .notification-default-action
+  .notification-content
+  .text-box
+  .body {
   /* Notification body */
   font-size: var(--font-size-body);
   font-weight: normal;
@@ -186,24 +238,45 @@ notificationwindow, blankwindow, blankwindow {
   text-shadow: none;
 }
 
-.notification-row .notification-background .notification .notification-default-action .notification-content progressbar {
+.notification-row
+  .notification-background
+  .notification
+  .notification-default-action
+  .notification-content
+  progressbar {
   /* The optional notification progress bar */
   margin-top: 4px;
 }
 
-.notification-row .notification-background .notification .notification-default-action .notification-content .body-image {
+.notification-row
+  .notification-background
+  .notification
+  .notification-default-action
+  .notification-content
+  .body-image {
   /* The "extra" optional bottom notification image */
   margin-top: 4px;
   background-color: white;
   -gtk-icon-filter: none;
 }
 
-.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply {
+.notification-row
+  .notification-background
+  .notification
+  .notification-default-action
+  .notification-content
+  .inline-reply {
   /* The inline reply section */
   margin-top: 4px;
 }
 
-.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-entry {
+.notification-row
+  .notification-background
+  .notification
+  .notification-default-action
+  .notification-content
+  .inline-reply
+  .inline-reply-entry {
   background: var(--noti-bg-darker);
   color: var(--text-color);
   caret-color: var(--text-color);
@@ -211,7 +284,13 @@ notificationwindow, blankwindow, blankwindow {
   border-radius: var(--border-radius);
 }
 
-.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button {
+.notification-row
+  .notification-background
+  .notification
+  .notification-default-action
+  .notification-content
+  .inline-reply
+  .inline-reply-button {
   margin-left: 4px;
   background: rgba(var(--noti-bg), var(--noti-bg-alpha));
   border: var(--border);
@@ -219,18 +298,33 @@ notificationwindow, blankwindow, blankwindow {
   color: var(--text-color);
 }
 
-.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button:disabled {
+.notification-row
+  .notification-background
+  .notification
+  .notification-default-action
+  .notification-content
+  .inline-reply
+  .inline-reply-button:disabled {
   background: initial;
   color: var(--text-color-disabled);
   border: var(--border);
   border-color: transparent;
 }
 
-.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button:hover {
+.notification-row
+  .notification-background
+  .notification
+  .notification-default-action
+  .notification-content
+  .inline-reply
+  .inline-reply-button:hover {
   background: var(--noti-bg-hover);
 }
 
-.notification-row .notification-background .notification .notification-alt-actions {
+.notification-row
+  .notification-background
+  .notification
+  .notification-alt-actions {
   background: none;
   border-bottom-left-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
@@ -243,7 +337,11 @@ notificationwindow, blankwindow, blankwindow {
   padding: 0;
 }
 
-.notification-row .notification-background .notification .notification-action > button {
+.notification-row
+  .notification-background
+  .notification
+  .notification-action
+  > button {
   border-radius: var(--border-radius);
   color: var(--text-color);
 }
@@ -274,7 +372,8 @@ notificationwindow, blankwindow, blankwindow {
   margin: 12px 20px;
 }
 
-.notification-group .notification-group-buttons, .notification-group .notification-group-headers {
+.notification-group .notification-group-buttons,
+.notification-group .notification-group-headers {
   margin: 0 16px;
   color: var(--text-color);
 }
@@ -313,12 +412,18 @@ notificationwindow, blankwindow, blankwindow {
   /* Set lower stacked notifications opacity to 0 */
 }
 
-.notification-group.collapsed .notification-row:not(:last-child) .notification-action,
-.notification-group.collapsed .notification-row:not(:last-child) .notification-default-action {
+.notification-group.collapsed
+  .notification-row:not(:last-child)
+  .notification-action,
+.notification-group.collapsed
+  .notification-row:not(:last-child)
+  .notification-default-action {
   opacity: 0;
 }
 
-.notification-group.collapsed:hover .notification-row:not(:only-child) .notification {
+.notification-group.collapsed:hover
+  .notification-row:not(:only-child)
+  .notification {
   background-color: var(--noti-bg-hover);
 }
 
@@ -348,7 +453,10 @@ notificationwindow, blankwindow, blankwindow {
   transition: var(--group-collapse-tranistion), var(--hover-tranistion);
 }
 
-.control-center .control-center-list .notification .notification-default-action:hover,
+.control-center
+  .control-center-list
+  .notification
+  .notification-default-action:hover,
 .control-center .control-center-list .notification .notification-action:hover {
   background-color: var(--noti-bg-hover);
 }
@@ -370,24 +478,6 @@ notificationwindow, blankwindow, blankwindow {
 .widget {
   /* margin: 8px;
   padding: 8px; */
-  border-radius: var(--border-radius);
-}
-
-
-
-/* DND widget */
-.widget-dnd label {
-  color: var(--text-color);
-  margin-right: 8px;
-  font-size: 1.1rem;
-}
-
-.widget-dnd switch {
-  border-radius: var(--border-radius);
-  margin-left: 8px;
-}
-
-.widget-dnd switch slider {
   border-radius: var(--border-radius);
 }
 
@@ -557,6 +647,6 @@ notificationwindow, blankwindow, blankwindow {
 }
 
 flowboxchild {
-  max-width: 26px;
+  min-width: 26px;
   border-radius: var(--border-radius);
 }

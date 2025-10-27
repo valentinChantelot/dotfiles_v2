@@ -1,6 +1,6 @@
 .widget-buttons-grid,
 .widget-buttons-grid > flowbox,
 .widget-buttons-grid > flowbox > flowboxchild {
-    margin: 0;
-    padding: 0; 
+  margin: 0;
+  padding: 0;
 }
