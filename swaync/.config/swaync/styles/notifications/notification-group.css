@@ -1,0 +1,69 @@
+.notification-group {
+  transition: opacity 200ms ease-in-out;
+}
+
+.notification-group:focus {
+  background: transparent;
+}
+
+.notification-group-header,
+.notification-group-icon {
+  /* Do not display title for notification group */
+  opacity: 0;
+}
+
+.notification-group-collapse-button {
+  background-image: url("../../icons/collapse.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px 24px;
+  background-color: transparent;
+}
+
+.notification-group-close-all-button,
+.notification-group.collapsed .close-button {
+  background-image: url("../../icons/close.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px 24px;
+  background-color: transparent;
+}
+
+.notification-group.collapsed .close-button {
+  margin-top: 24px;
+  margin-right: -2px;
+}
+
+.notification-group-collapse-button > image,
+.notification-group.collapsed .close-button > image,
+.notification-group-close-all-button > image {
+  opacity: 0;
+}
+
+.notification-group.collapsed.not-expanded {
+  opacity: 0.4;
+}
+
+.notification-group.collapsed .notification-row .notification {
+  background-color: rgba(var(--noti-bg), 1);
+}
+
+.notification-group.collapsed .notification-row:not(:last-child) {
+  /* Top notification in stack */
+  /* Set lower stacked notifications opacity to 0 */
+}
+
+.notification-group.collapsed
+  .notification-row:not(:last-child)
+  .notification-action,
+.notification-group.collapsed
+  .notification-row:not(:last-child)
+  .notification-default-action {
+  opacity: 0;
+}
+
+.notification-group.collapsed:hover
+  .notification-row:not(:only-child)
+  .notification {
+  background-color: var(--noti-bg-hover);
+}

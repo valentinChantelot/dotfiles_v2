@@ -1,0 +1,12 @@
+box,
+flowbox,
+flowboxchild,
+overlay,
+.control-center .control-center-list,
+.widget-notifications,
+.widget-title,
+.notification-group,
+.notification-backgorund {
+  margin: 0;
+  padding: 0;
+}

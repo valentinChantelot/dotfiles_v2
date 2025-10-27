@@ -16,6 +16,7 @@
   "transition-time": 200,
   "hide-on-clear": false,
   "hide-on-action": true,
+  "text-empty": "Notification log: empty",
   "widgets": ["buttons-grid", "title", "notifications"],
   "widget-config": {
     "title": {
@@ -28,15 +29,15 @@
       "actions": [
         {
           "label": "",
-          "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
+          "command": "notify-send -u low 'This is just a dino button' 'Because dinos are cool'"
         },
         {
           "label": "",
-          "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
+          "command": "notify-send -u normal 'This is just a dino button' 'Because dinos are cool'"
         },
         {
           "label": "",
-          "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
+          "command": "notify-send -u critical 'This is just a dino button' 'Because dinos are cool'"
         },
         {
           "label": "",

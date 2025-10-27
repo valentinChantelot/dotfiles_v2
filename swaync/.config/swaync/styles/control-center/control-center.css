@@ -1,0 +1,34 @@
+.blank-window {
+  /* Window behind control center and on all other monitors */
+  background: transparent;
+}
+
+.control-center {
+  padding: 52px 32px;
+
+  font-family: var(--font-family);
+  color: var(--text-color);
+
+  background-color: var(--cc-bg);
+  border-radius: var(--border-radius);
+}
+
+.control-center .control-center-list-placeholder {
+  /* The placeholder when there are no notifications */
+  background-image: url("../../icons/no-notification.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 64px 64px;
+  background-color: transparent;
+}
+
+.control-center .control-center-list-placeholder > image {
+  opacity: 0;
+}
+
+.control-center .control-center-list-placeholder > label {
+  margin-top: -2rem;
+
+  font-family: var(--font-family-highlight);
+  text-transform: uppercase;
+}
