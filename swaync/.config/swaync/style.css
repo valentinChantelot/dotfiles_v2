@@ -15,8 +15,8 @@
   --font-family-highlight: "BigBlueTerm437 Nerd Font";
   --font-family: "Terminess Nerd Font";
 
-  --space-between-notifications-blocks: 24px;
-  --space-between-notifications-blocks-in-group: 8px;
+  --space-between-notifications-blocks: 12px;
+  --space-between-notifications-blocks-in-group: 6px;
 
   --cc-bg: rgb(22, 22, 22);
   --noti-border-color: rgba(255, 255, 255, 0.15);

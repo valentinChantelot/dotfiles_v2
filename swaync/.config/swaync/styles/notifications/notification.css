@@ -5,3 +5,22 @@
 .notification-default-action {
   padding: 24px;
 }
+
+.notification-content {
+  overflow: hidden;
+}
+
+.notification-content image {
+  /*  hide notification icon */
+  margin-left: -100px;
+  opacity: 0;
+}
+
+.notification-content .summary {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.notification-content .time {
+  font-size: 12px;
+}
