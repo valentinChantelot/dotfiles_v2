@@ -1,12 +1,12 @@
 .notification-row {
-  margin: var(--space-between-notifications-blocks) 0;
+  margin-bottom: var(--space-between-notifications-blocks);
 
   background: none;
   outline: none;
 }
 
 .notification-group:not(.collapsed) .notification-row {
-  margin: var(--space-between-notifications-blocks-in-group) 0;
+  margin-bottom: var(--space-between-notifications-blocks-in-group);
 }
 
 .notification-row:focus {

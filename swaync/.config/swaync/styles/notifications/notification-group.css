@@ -28,7 +28,7 @@
   background-color: transparent;
 }
 
-.notification-group.collapsed .close-button {
+.widget > .notification-group > .close-button {
   margin-top: 12px;
   margin-right: -2px;
 }
