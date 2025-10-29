@@ -6,12 +6,9 @@
   padding: 24px;
 }
 
-.notification-content {
-  overflow: hidden;
-}
-
 .notification-content image {
-  /*  hide notification icon */
+  /*  hide notification icon - but with a warning in logs */
+  /* TODO : search for a better way to handle this */
   margin-left: -100px;
   opacity: 0;
 }
