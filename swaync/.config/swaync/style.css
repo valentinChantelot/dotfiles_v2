@@ -1,10 +1,8 @@
 @import url("styles/global/reset.css");
+@import url("styles/global/global.css");
 @import url("styles/global/buttons.css");
 
-@import url("styles/control-center/control-center.css");
-
-@import url("styles/widgets/mpris.css");
-@import url("styles/buttons-grid/widget-buttons-grid.css");
+@import url("styles/widgets/buttons-grid/widget-buttons-grid.css");
 
 @import url("styles/notifications/widget-title.css");
 @import url("styles/notifications/notification-group.css");
@@ -12,40 +10,28 @@
 @import url("styles/notifications/notification.css");
 
 :root {
-  --font-family-highlight: "BigBlueTerm437 Nerd Font";
+  --color-bg: rgb(19, 19, 19);
+  --color-bg-alternate: rgb(30, 30, 30);
+  --color-selected: rgb(0, 128, 255);
+
+  --elevation-1: rgba(241, 241, 241, 0.08);
+  --elevation-2: rgba(241, 241, 241, 0.12);
+  --elevation-3: rgba(241, 241, 241, 0.16);
+
+  --color-text: rgb(241, 241, 241);
+  --color-text-secondary: rgb(186, 186, 186);
+  --color-text-disabled: rgb(120, 120, 120);
+
   --font-family: "Terminess Nerd Font";
+  --font-family-highlight: "BigBlueTerm437 Nerd Font";
 
   --space-between-notifications-blocks: 12px;
   --space-between-notifications-blocks-in-group: 6px;
 
-  --cc-bg: rgb(22, 22, 22);
-  --noti-border-color: rgba(255, 255, 255, 0.15);
-  --noti-bg: 48, 48, 48;
-  --noti-bg-alpha: 0.8;
-  --noti-bg-darker: rgb(38, 38, 38);
-  --noti-bg-hover: rgb(56, 56, 56);
-  --noti-bg-focus: rgba(68, 68, 68, 0.6);
-  --noti-close-bg: rgb(78, 78, 78);
-  --noti-close-bg-hover: rgb(94, 94, 94);
-  --text-color: rgb(255, 255, 255);
-  --text-color-disabled: rgb(150, 150, 150);
-  --bg-selected: rgb(0, 128, 255);
-
-  --notification-icon-size: 64px;
-  --notification-app-icon-size: calc(var(--notification-icon-size) / 3);
-  --notification-group-icon-size: 32px;
-
-  --border: 1px solid var(--noti-border-color);
   --border-radius: 0px;
-  --notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
-    0 1px 3px 1px rgba(0, 0, 0, 0.7), 0 2px 6px 2px rgba(0, 0, 0, 0.3);
-  --font-size-body: 15px;
-  --font-size-summary: 16px;
-  /* Deprecated variables (because of their typos). Keeping them around for backwards compatibility. */
-  --hover-tranistion: background 0.15s ease-in-out;
-  --group-collapse-tranistion: opacity 400ms ease-in-out;
-  --hover-transition: var(--hover-tranistion);
-  --group-collapse-transition: var(--group-collapse-tranistion);
+
+  --hover-transition: background 0.15s ease-in-out;
+  --group-collapse-transition: opacity 400ms ease-in-out;
 }
 
 /* Fallback for older CSS themes */
@@ -62,116 +48,3 @@
 @define-color text-color rgb(255, 255, 255);
 @define-color text-color-disabled rgb(150, 150, 150);
 @define-color bg-selected rgb(0, 128, 255);
-notificationwindow,
-blankwindow,
-blankwindow {
-  background: transparent;
-}
-
-/*** Widgets ***/
-.widget {
-  /* margin: 8px;
-  padding: 8px; */
-  border-radius: var(--border-radius);
-}
-
-/* Label widget */
-.widget-label > label {
-  font-size: 1.1rem;
-}
-
-/* Buttons widget */
-.widget-buttons-grid flowboxchild > button {
-  border-radius: var(--border-radius);
-}
-
-.widget-buttons-grid flowboxchild > button.toggle:checked {
-  /* style given to the active toggle button */
-}
-
-/* Menubar widget */
-.widget-menubar {
-  /* The revealer buttons */
-  /* .AnyName { Name defined in config after #
-    background-color: rgba(var(--noti-bg), 1.0);
-    padding: 8px;
-    margin: 8px;
-    border-radius: 12px;
-  }
-
-  .AnyName>button {
-    background: transparent;
-    border: none;
-  }
-
-  .AnyName>button:hover {
-    background-color: var(--noti-bg-hover);
-  } */
-}
-
-.widget-menubar > .menu-button-bar {
-  /* The left button container */
-  /* The right button container */
-  /* The left and right button container */
-}
-
-.widget-menubar > .menu-button-bar > .start {
-  margin-left: 8px;
-}
-
-.widget-menubar > .menu-button-bar > .end {
-  margin-right: 8px;
-}
-
-.widget-menubar > .menu-button-bar > .widget-menubar-container button {
-  border-radius: var(--border-radius);
-  margin: 0 4px;
-}
-
-.widget-menubar > revealer * {
-  margin-top: 8px;
-}
-
-.widget-menubar > revealer * button {
-  border-radius: var(--border-radius);
-  margin: 8px;
-  margin-top: 0;
-}
-
-.widget-menubar > revealer * button:last-child {
-  margin-bottom: 0;
-}
-
-/* Volume widget */
-:root {
-  --widget-volume-row-icon-size: 24px;
-}
-
-/* Each row app icon */
-.widget-volume row image {
-  -gtk-icon-size: var(--widget-volume-row-icon-size);
-}
-
-.per-app-volume {
-  background-color: var(--noti-bg-alt);
-  margin: 8px;
-  margin-bottom: 0;
-  border-radius: var(--border-radius);
-}
-
-/* Slider widget */
-.widget-slider label {
-  font-size: inherit;
-}
-
-/* Backlight widget */
-/* Inhibitors widget */
-.widget-inhibitors > label {
-  margin-right: 8px;
-  font-size: 1.5rem;
-}
-
-.widget-inhibitors > button {
-  margin-left: 8px;
-  border-radius: var(--border-radius);
-}

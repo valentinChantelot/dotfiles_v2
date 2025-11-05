@@ -12,5 +12,5 @@
   .notification
   .notification-default-action:hover,
 .control-center .control-center-list .notification .notification-action:hover {
-  background-color: var(--noti-bg-hover);
+  background-color: var(--elevation-2);
 }

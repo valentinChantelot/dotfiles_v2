@@ -1,5 +1,5 @@
-.blank-window {
-  /* Window behind control center and on all other monitors */
+notificationwindow,
+blankwindow {
   background: transparent;
 }
 
@@ -7,9 +7,9 @@
   padding: 52px 32px;
 
   font-family: var(--font-family);
-  color: var(--text-color);
+  color: var(--color-text);
 
-  background-color: var(--cc-bg);
+  background-color: var(--color-bg);
   border-radius: var(--border-radius);
 }
 

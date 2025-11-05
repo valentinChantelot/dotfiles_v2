@@ -1,8 +1,5 @@
 .notification-group {
   transition: opacity 200ms ease-in-out;
-}
-
-.notification-group:focus {
   background: transparent;
 }
 
@@ -43,7 +40,7 @@
 }
 
 .notification-group.collapsed .notification-row .notification {
-  background-color: rgba(var(--noti-bg), 1);
+  background-color: var(--elevation-1);
 }
 
 .notification-group.collapsed .notification-row:not(:last-child) {
@@ -63,5 +60,5 @@
 .notification-group.collapsed:hover
   .notification-row:not(:only-child)
   .notification {
-  background-color: var(--noti-bg-hover);
+  background-color: var(--elevation-2);
 }

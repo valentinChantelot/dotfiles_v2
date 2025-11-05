@@ -1,5 +1,5 @@
 .notification-background {
-  background: transparent;
+  background: var(--color-bg);
 }
 
 .notification-default-action {

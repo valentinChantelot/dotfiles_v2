@@ -1,5 +1,6 @@
 {
   "$schema": "./configSchema.json",
+
   "positionX": "right",
   "positionY": "top",
   "layer": "overlay",
@@ -8,14 +9,19 @@
   "control-center-margin-right": 12,
   "control-center-margin-left": 12,
   "notification-window-width": 450,
+  "fit-to-screen": true,
+
   "timeout": 10,
   "timeout-low": 5,
   "timeout-critical": 0,
-  "fit-to-screen": true,
+
   "keyboard-shortcuts": true,
+
   "transition-time": 200,
+
   "hide-on-clear": false,
   "hide-on-action": true,
+
   "text-empty": "Notification log: empty",
   "widgets": ["buttons-grid", "title", "notifications"],
   "widget-config": {

@@ -1,0 +1,7 @@
+.floating-notifications > animatedlistitem {
+  margin: 12px 24px;
+}
+
+.floating-notifications .notification-background {
+  background-color: var(--color-bg);
+}

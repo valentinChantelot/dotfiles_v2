@@ -19,10 +19,11 @@ button {
 
 button:hover {
   -gtk-icon-filter: none;
-  background-color: var(--noti-bg-hover);
+  background-color: var(--elevation-2);
+  transition: var(--hover-transition);
 }
 
-.close-button {
+button.close-button {
   background-image: url("../../icons/close.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -36,11 +37,11 @@ button:hover {
   min-height: 24px;
 }
 
-.close-button:hover {
-  background-color: var(--noti-close-bg-hover);
-  transition: var(--hover-tranistion);
+button.close-button:hover {
+  background-color: var(--elevation-2);
+  transition: var(--hover-transition);
 }
 
-.close-button > image {
+button.close-button > image {
   opacity: 0;
 }
