@@ -1,0 +1,16 @@
+:root {
+  --color-bg: rgb(120, 120, 120);
+
+  --elevation-1: rgba(241, 241, 241, 0.08);
+  --elevation-2: rgba(241, 241, 241, 0.12);
+  --elevation-3: rgba(241, 241, 241, 0.16);
+
+  --color-text: rgb(241, 241, 241);
+  --color-text-secondary: rgb(186, 186, 186);
+  --color-text-disabled: rgb(120, 120, 120);
+
+  --font-family: "Terminess Nerd Font";
+  --font-family-highlight: "BigBlueTerm437 Nerd Font";
+
+  --border-radius: 0px;
+}

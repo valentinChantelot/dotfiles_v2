@@ -1,22 +1,48 @@
-#!/usr/bin/env bash
-set -e
+#!/bin/bash
 
 THEMES_DIR="$HOME/.config/themes"
-CURRENT_LINK="$THEMES_DIR/current"
+LIGHT_DIR="$THEMES_DIR/light"
+DARK_DIR="$THEMES_DIR/dark"
+CURRENT_DIR="$THEMES_DIR/current"
+STATE_FILE="$THEMES_DIR/.current_theme"
 
-CUR=$(readlink "$CURRENT_LINK")
-if [[ "$CUR" == *"/dark" ]]; then
-    TARGET="light"
-else
-    TARGET="dark"
+if [[ ! -d "$LIGHT_DIR" ]] || [[ ! -d "$DARK_DIR" ]]; then
+    echo "Error: please use stow to init themes. See dotfiles to get more info."
+    exit 1
 fi
 
-ln -sfn "$THEMES_DIR/$TARGET" "$CURRENT_LINK"
+# get the current theme - default is light
+if [[ -f "$STATE_FILE" ]]; then
+    CURRENT_THEME=$(cat "$STATE_FILE")
+else
+    CURRENT_THEME="light"
+fi
 
-if command -v swaync-client &>/dev/null; then
-  swaync-client -rs
+if [[ "$CURRENT_THEME" == "light" ]]; then
+    NEW_THEME="dark"
+    SOURCE_DIR="$DARK_DIR"
+else
+    NEW_THEME="light"
+    SOURCE_DIR="$LIGHT_DIR"
+fi
+
+# clear and fill the current dir
+rm -rf "$CURRENT_DIR"/*
+cp -r "$SOURCE_DIR"/* "$CURRENT_DIR"/
+
+echo "$NEW_THEME" > "$STATE_FILE"
+
+# Reload apps
+if command -v swaync-client &> /dev/null; then
+    swaync-client -rs
+fi
+
+if pgrep -x waybar > /dev/null; then
+    pkill -SIGUSR2 waybar
 fi
 
 if command -v hyprctl &>/dev/null; then
   hyprctl reload
 fi
+
+exit 0

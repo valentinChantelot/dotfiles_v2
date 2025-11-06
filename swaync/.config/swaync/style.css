@@ -1,3 +1,5 @@
+@import url("../themes/current/theme.css");
+
 @import url("styles/global/reset.css");
 @import url("styles/global/global.css");
 @import url("styles/global/buttons.css");
@@ -10,41 +12,9 @@
 @import url("styles/notifications/notification.css");
 
 :root {
-  --color-bg: rgb(19, 19, 19);
-  --color-bg-alternate: rgb(30, 30, 30);
-  --color-selected: rgb(0, 128, 255);
-
-  --elevation-1: rgba(241, 241, 241, 0.08);
-  --elevation-2: rgba(241, 241, 241, 0.12);
-  --elevation-3: rgba(241, 241, 241, 0.16);
-
-  --color-text: rgb(241, 241, 241);
-  --color-text-secondary: rgb(186, 186, 186);
-  --color-text-disabled: rgb(120, 120, 120);
-
-  --font-family: "Terminess Nerd Font";
-  --font-family-highlight: "BigBlueTerm437 Nerd Font";
-
   --space-between-notifications-blocks: 12px;
   --space-between-notifications-blocks-in-group: 6px;
-
-  --border-radius: 0px;
 
   --hover-transition: background 0.15s ease-in-out;
   --group-collapse-transition: opacity 400ms ease-in-out;
 }
-
-/* Fallback for older CSS themes */
-@define-color cc-bg rgba(46, 46, 46, 0.7);
-@define-color noti-border-color rgba(255, 255, 255, 0.15);
-@define-color noti-bg rgba(48, 48, 48, 0.8);
-@define-color noti-bg-opaque rgb(48, 48, 48);
-@define-color noti-bg-darker rgb(38, 38, 38);
-@define-color noti-bg-hover rgb(56, 56, 56);
-@define-color noti-bg-hover-opaque rgb(56, 56, 56);
-@define-color noti-bg-focus rgba(68, 68, 68, 0.6);
-@define-color noti-close-bg rgba(255, 255, 255, 0.1);
-@define-color noti-close-bg-hover rgba(255, 255, 255, 0.15);
-@define-color text-color rgb(255, 255, 255);
-@define-color text-color-disabled rgb(150, 150, 150);
-@define-color bg-selected rgb(0, 128, 255);
