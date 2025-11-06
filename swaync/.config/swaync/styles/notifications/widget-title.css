@@ -8,5 +8,5 @@
 }
 
 .widget-title > button.control-center-clear-all {
-  background-image: url("../../icons/trash.svg");
+  background-image: -gtk-recolor(url("../../icons/trash.svg"));
 }

@@ -24,7 +24,7 @@ button:hover {
 }
 
 button.close-button {
-  background-image: url("../../icons/close.svg");
+  background-image: -gtk-recolor(url("../../icons/close.svg"));
   background-repeat: no-repeat;
   background-position: center;
   background-size: 12px 12px;

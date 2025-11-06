@@ -3,19 +3,20 @@ blankwindow {
   background: transparent;
 }
 
+* {
+  color: var(--color-text);
+  font-family: var(--font-family);
+  border-radius: var(--border-radius);
+}
+
 .control-center {
   padding: 52px 32px;
-
-  font-family: var(--font-family);
-  color: var(--color-text);
-
   background-color: var(--color-bg);
-  border-radius: var(--border-radius);
 }
 
 .control-center .control-center-list-placeholder {
   /* The placeholder when there are no notifications */
-  background-image: url("../../icons/no-notification.svg");
+  background-image: -gtk-recolor(url("../../icons/no-notification.svg"));
   background-repeat: no-repeat;
   background-position: center;
   background-size: 64px 64px;

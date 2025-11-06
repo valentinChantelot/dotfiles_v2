@@ -17,6 +17,7 @@
 
   "keyboard-shortcuts": true,
 
+  "cssPriority": "user",
   "transition-time": 200,
 
   "hide-on-clear": false,

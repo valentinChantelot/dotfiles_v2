@@ -10,7 +10,7 @@
 }
 
 .notification-group-collapse-button {
-  background-image: url("../../icons/collapse.svg");
+  background-image: -gtk-recolor(url("../../icons/collapse.svg"));
   background-repeat: no-repeat;
   background-position: center;
   background-size: 24px 24px;
@@ -18,7 +18,7 @@
 }
 
 .notification-group-close-all-button {
-  background-image: url("../../icons/close.svg");
+  background-image: -gtk-recolor(url("../../icons/close.svg"));
   background-repeat: no-repeat;
   background-position: center;
   background-size: 24px 24px;

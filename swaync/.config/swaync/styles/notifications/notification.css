@@ -6,6 +6,10 @@
   padding: 24px;
 }
 
+.notification-content {
+  color: var(--color-text);
+}
+
 .notification-content image {
   /*  hide notification icon - but with a warning in logs */
   /* TODO : search for a better way to handle this */
