@@ -35,27 +35,27 @@
       "actions": [
         {
           "label": "",
-          "command": "notify-send -u low 'This is just a dino button' 'Because dinos are cool'"
+          "command": "notify-send -u low 'This is a cool dino-button' 'Because dinos are cool'"
         },
         {
           "label": "",
-          "command": "notify-send -u normal 'This is just a dino button' 'Because dinos are cool'"
+          "command": "~/.local/bin/theme-toggle"
         },
         {
           "label": "",
-          "command": "notify-send -u critical 'This is just a dino button' 'Because dinos are cool'"
+          "command": "codium --enable-features=UseOzonePlatform --ozone-platform=wayland"
         },
         {
           "label": "",
-          "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
+          "command": "protonvpn-app"
         },
         {
           "label": "",
-          "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
+          "command": "pidof hyprlock || hyprlock"
         },
         {
           "label": "",
-          "command": "notify-send 'This is just a dino button' 'Because dinos are cool'"
+          "command": "pidof wlogout || wlogout"
         }
       ]
     }
