@@ -39,6 +39,10 @@
   opacity: 0.4;
 }
 
+.notification-group .notification-row .notification {
+  background-color: var(--elevation-1);
+}
+
 .notification-group.collapsed .notification-row .notification {
   background-color: var(--elevation-1);
 }
@@ -59,6 +63,7 @@
 
 .notification-group.collapsed:hover
   .notification-row:not(:only-child)
-  .notification {
+  .notification,
+.notification-group:not(.collapsed) .notification-row .notification:hover {
   background-color: var(--elevation-2);
 }

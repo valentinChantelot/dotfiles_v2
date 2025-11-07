@@ -1,3 +1,7 @@
+.notification {
+  padding-right: 40px;
+}
+
 .notification-background {
   background: var(--color-bg);
 }
