@@ -1,13 +1,13 @@
 :root {
-  --color-bg: rgb(255, 235, 228);
+  --color-bg: rgb(19, 19, 19);
 
-  --elevation-1: rgba(17, 21, 28, 0.08);
-  --elevation-2: rgba(17, 21, 28, 0.12);
-  --elevation-3: rgba(17, 21, 28, 0.16);
+  --elevation-1: rgba(241, 241, 241, 0.08);
+  --elevation-2: rgba(241, 241, 241, 0.12);
+  --elevation-3: rgba(241, 241, 241, 0.16);
 
-  --color-text: rgb(5, 6, 9);
-  --color-text-secondary: rgb(17, 21, 28);
-  --color-text-disabled: rgb(33, 39, 49);
+  --color-text: rgb(241, 241, 241);
+  --color-text-secondary: rgb(186, 186, 186);
+  --color-text-disabled: rgb(120, 120, 120);
 
   --font-family: "Terminess Nerd Font";
   --font-family-highlight: "BigBlueTerm437 Nerd Font";
