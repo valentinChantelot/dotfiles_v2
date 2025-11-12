@@ -3,7 +3,7 @@
 THEMES_DIR="$HOME/.config/themes"
 LIGHT_DIR="$THEMES_DIR/light"
 DARK_DIR="$THEMES_DIR/dark"
-CURRENT_DIR="$THEMES_DIR/current"
+CURRENT_THEME_DIR="$THEMES_DIR/current"
 STATE_FILE="$HOME/.config/.current_theme"
 
 if [[ ! -d "$LIGHT_DIR" ]] || [[ ! -d "$DARK_DIR" ]]; then
@@ -26,8 +26,8 @@ else
     SOURCE_DIR="$LIGHT_DIR"
 fi
 
-rm -rf "$CURRENT_DIR"
-ln -sf "$SOURCE_DIR" "$CURRENT_DIR"
+rm -rf "$CURRENT_THEME_DIR"
+ln -sf "$SOURCE_DIR" "$CURRENT_THEME_DIR"
 
 echo "$NEW_THEME" > "$STATE_FILE"
 echo "Switched to $NEW_THEME theme"
