@@ -1,36 +1,39 @@
 {
   "reload_style_on_change": true,
+
   "layer": "top",
   "position": "top",
+  "exclusive": true,
+
   "spacing": 0,
-  "height": 26,
-  "modules-left": ["custom/omarchy", "hyprland/workspaces"],
-  "modules-center": ["clock", "custom/update", "custom/screenrecording-indicator"],
+  "margin-top": 10,
+  "margin-left": 10,
+  "margin-right": 10,
+  "margin-bottom": 10,
+  "height": 35,
+
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": [
+    "custom/applemusic",
+    "custom/youtube",
+    "custom/music_prev",
+    "custom/music_play",
+    "custom/music_next"
+  ],
   "modules-right": [
     "group/tray-expander",
-    "bluetooth",
-    "network",
+    "custom/bluetooth",
+    "custom/network",
     "pulseaudio",
     "volume",
     "cpu",
-    "battery"
+    "battery",
+    "clock"
   ],
+
   "hyprland/workspaces": {
     "on-click": "activate",
-    "format": "{icon}",
-    "format-icons": {
-      "default": "",
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "6": "6",
-      "7": "7",
-      "8": "8",
-      "9": "9",
-      "active": "󱓻"
-    },
+    "format": "{name}",
     "persistent-workspaces": {
       "1": [],
       "2": [],
@@ -39,30 +42,66 @@
       "5": []
     }
   },
-//   "custom/omarchy": {
-//     "format": "<span font='omarchy'>\ue900</span>",
-//     "on-click": "omarchy-menu",
-//     "tooltip-format": "Omarchy Menu\n\nSuper + Alt + Space"
-//   },
-//   "custom/update": {
-//     "format": "",
-//     "exec": "omarchy-update-available",
-//     "on-click": "omarchy-launch-floating-terminal-with-presentation omarchy-update",
-//     "tooltip-format": "Omarchy update available",
-//     "signal": 7,
-//     "interval": 3600
-//   },
+
+  "custom/applemusic": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "gtk-launch \"Apple Music.desktop\""
+  },
+  "custom/youtube": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "gtk-launch \"Youtube.desktop\""
+  },
+  "custom/music_prev": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "playerctl previous"
+  },
+  "custom/music_play": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "playerctl play-pause"
+  },
+  "custom/music_next": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "playerctl next"
+  },
+
+  "group/tray-expander": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "tray-group-item"
+    },
+    "modules": ["custom/expand-icon", "tray"]
+  },
+
+  "custom/bluetooth": {
+    "format": " ",
+    "tooltip": "Manage Bluetooth devices",
+    "on-click": "kitty -e bluetuith",
+    "interval": 0
+  },
+  "custom/network": {
+    "exec": "~/.config/waybar/scripts/network_status.sh",
+    "format": "{}",
+    "interval": 5,
+    "on-click": "kitty -e nmtui",
+    "tooltip": false,
+    "markup": false
+  },
 
   "cpu": {
     "interval": 5,
-    "format": "󰍛",
+    "format": "cpu",
     "on-click": "$TERMINAL -e btop"
   },
   "clock": {
     "format": "{:L%A %H:%M}",
     "format-alt": "{:L%d %B W%V %Y}",
-    "tooltip": false,
-    // "on-click-right": "omarchy-cmd-tzupdate"
+    "tooltip": false
   },
   "network": {
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
@@ -74,35 +113,8 @@
     "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
-    "spacing": 1,
-    // "on-click": "omarchy-launch-wifi"
+    "spacing": 1
   },
-//   "battery": {
-//     "format": "{capacity}% {icon}",
-//     "format-discharging": "{icon}",
-//     "format-charging": "{icon}",
-//     "format-plugged": "",
-//     "format-icons": {
-//       "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
-//       "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
-//     },
-//     "format-full": "󰂅",
-//     "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
-//     "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
-//     "interval": 5,
-//     "on-click": "omarchy-menu power",
-//     "states": {
-//       "warning": 20,
-//       "critical": 10
-//     }
-//   },
-//   "bluetooth": {
-//     "format": "",
-//     "format-disabled": "󰂲",
-//     "format-connected": "",
-//     "tooltip-format": "Devices connected: {num_connections}",
-//     "on-click": "blueberry"
-//   },
   "pulseaudio": {
     "format": "{icon}",
     "on-click": "$TERMINAL --class=Wiremix -e wiremix",
@@ -122,26 +134,13 @@
     "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ +5%",
     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ -5%"
   },
-  "group/tray-expander": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 600,
-      "children-class": "tray-group-item"
-    },
-    "modules": ["custom/expand-icon", "tray"]
-  },
+
   "custom/expand-icon": {
-    "format": " ",
+    "format": " ",
     "tooltip": false
   },
-//   "custom/screenrecording-indicator": {
-//     "on-click": "omarchy-cmd-screenrecord",
-//     "exec": "$OMARCHY_PATH/default/waybar/indicators/screen-recording.sh",
-//     "signal": 8,
-//     "return-type": "json"
-//   },
   "tray": {
-    "icon-size": 12,
+    "icon-size": 16,
     "spacing": 12
   }
 }

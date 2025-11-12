@@ -1,0 +1,40 @@
+#custom-bluetooth {
+  background-image: url("../icons/bluetooth.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+#custom-network {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+#custom-network span:contains("power") {
+  background-image: url("../icons/power.svg");
+}
+
+.network-icon.cellular-signal-off {
+  background-image: url("../icons/cellular-signal-off.svg");
+}
+
+.network-icon.cellular-signal-0 {
+  background-image: url("../icons/cellular-signal-0.svg");
+}
+
+.network-icon.cellular-signal-1 {
+  background-image: url("../icons/cellular-signal-1.svg");
+}
+
+.network-icon.cellular-signal-2 {
+  background-image: url("../icons/cellular-signal-2.svg");
+}
+
+.network-icon.cellular-signal-3 {
+  background-image: url("../icons/cellular-signal-3.svg");
+}

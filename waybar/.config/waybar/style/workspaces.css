@@ -1,0 +1,21 @@
+.modules-left {
+  margin-left: 10px;
+}
+
+#workspaces button {
+  background: transparent;
+  padding: 10px 4px;
+  transition: background-color 0.2s;
+}
+
+#workspaces button.active {
+  background: @elevation-3;
+}
+
+#workspaces button.empty {
+  opacity: 0.6;
+}
+
+#workspaces button:hover {
+  background: @elevation-2;
+}

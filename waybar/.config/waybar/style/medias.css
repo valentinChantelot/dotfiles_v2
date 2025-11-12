@@ -1,0 +1,32 @@
+#custom-applemusic,
+#custom-youtube,
+#custom-music_prev,
+#custom-music_play,
+#custom-music_next {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+#custom-applemusic {
+  background-image: url("../icons/music.svg");
+}
+
+#custom-youtube {
+  background-image: url("../icons/movie.svg");
+  margin-right: 24px;
+}
+
+#custom-music_prev {
+  background-image: url("../icons/prev.svg");
+}
+
+#custom-music_play {
+  background-image: url("../icons/play.svg");
+}
+
+#custom-music_next {
+  background-image: url("../icons/next.svg");
+}
