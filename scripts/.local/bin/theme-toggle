@@ -1,0 +1,50 @@
+#!/bin/bash
+
+THEMES_DIR="$HOME/.config/themes"
+LIGHT_DIR="$THEMES_DIR/light"
+DARK_DIR="$THEMES_DIR/dark"
+CURRENT_DIR="$THEMES_DIR/current"
+STATE_FILE="$HOME/.config/.current_theme"
+
+if [[ ! -d "$LIGHT_DIR" ]] || [[ ! -d "$DARK_DIR" ]]; then
+    echo "Error: please use stow to init themes. See dotfiles to get more info."
+    exit 1
+fi
+
+if [[ ! -f "$STATE_FILE" ]]; then
+    echo "light" > "$STATE_FILE"
+    echo "Info: Created state file with default theme 'light'"
+fi
+
+CURRENT_THEME=$(cat "$STATE_FILE")
+
+if [[ "$CURRENT_THEME" == "light" ]]; then
+    NEW_THEME="dark"
+    SOURCE_DIR="$DARK_DIR"
+else
+    NEW_THEME="light"
+    SOURCE_DIR="$LIGHT_DIR"
+fi
+
+rm -rf "$CURRENT_DIR"
+ln -sf "$SOURCE_DIR" "$CURRENT_DIR"
+
+echo "$NEW_THEME" > "$STATE_FILE"
+echo "Switched to $NEW_THEME theme"
+
+# Reload apps
+if command -v swaync-client &> /dev/null; then
+    pkill swaync
+    sleep 0.2
+    swaync &
+fi
+
+if pgrep -x waybar > /dev/null; then
+    pkill -SIGUSR2 waybar
+fi
+
+if command -v hyprctl &>/dev/null; then
+    hyprctl reload
+fi
+
+exit 0
