@@ -36,7 +36,7 @@
       "actions": [
         {
           "label": "",
-          "command": "notify-send -u low 'This is a cool dino-button' 'Because dinos are cool'"
+          "command": "notify-send -u low 'This is a cool dino-button' 'Because dinos are the best'"
         },
         {
           "label": "",
@@ -44,7 +44,7 @@
         },
         {
           "label": "",
-          "command": "codium --enable-features=UseOzonePlatform --ozone-platform=wayland"
+          "command": "codium --enable-features=UseOzonePlatform --ozone-platform=wayland ~/dotfiles"
         },
         {
           "label": "",

@@ -1,3 +1,5 @@
 .widget-buttons-grid > flowbox > flowboxchild:nth-child(2) > button {
-  background-image: -gtk-recolor(url("../../../../themes/dark/theme-icon.svg"));
+  background-image: -gtk-recolor(
+    url("../../../../themes/current/theme-icon.svg")
+  );
 }

@@ -1,2 +1,2 @@
-themes/.config/themes/current/**
-!themes/.config/themes/current/
+**/.config/themes/current
+themes/.config/themes/.current_theme
