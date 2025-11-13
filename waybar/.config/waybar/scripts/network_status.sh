@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 if nmcli -t -f DEVICE,TYPE,STATE dev | grep -qE 'ethernet:connected'; then
-  # ethernet
-    echo "<span>power</span>"
+  echo '{"class": "power"}'
   exit 0
 fi
 

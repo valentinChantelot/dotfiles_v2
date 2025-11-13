@@ -1,40 +1,57 @@
+#custom-bluetooth,
+#custom-network,
+#custom-volume {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+  min-width: 24px;
+  min-height: 24px;
+}
+
 #custom-bluetooth {
   background-image: url("../icons/bluetooth.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 20px 20px;
-  min-width: 24px;
-  min-height: 24px;
 }
 
-#custom-network {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 20px 20px;
-  min-width: 24px;
-  min-height: 24px;
-}
-
-#custom-network span:contains("power") {
+#custom-network.power {
   background-image: url("../icons/power.svg");
 }
 
-.network-icon.cellular-signal-off {
+#custom-network.cellular-signal-off {
   background-image: url("../icons/cellular-signal-off.svg");
 }
 
-.network-icon.cellular-signal-0 {
+#custom-network.cellular-signal-0 {
   background-image: url("../icons/cellular-signal-0.svg");
 }
 
-.network-icon.cellular-signal-1 {
+#custom-network.cellular-signal-1 {
   background-image: url("../icons/cellular-signal-1.svg");
 }
 
-.network-icon.cellular-signal-2 {
+#custom-network.cellular-signal-2 {
   background-image: url("../icons/cellular-signal-2.svg");
 }
 
-.network-icon.cellular-signal-3 {
+#custom-network.cellular-signal-3 {
   background-image: url("../icons/cellular-signal-3.svg");
+}
+
+#custom-volume.muted {
+  background-image: url("../icons/volume-x.svg");
+}
+
+#custom-volume.volume-0 {
+  background-image: url("../icons/volume-0.svg");
+}
+
+#custom-volume.volume-1 {
+  background-image: url("../icons/volume-1.svg");
+}
+
+#custom-volume.volume-2 {
+  background-image: url("../icons/volume-2.svg");
+}
+
+#custom-volume.volume-3 {
+  background-image: url("../icons/volume-3.svg");
 }

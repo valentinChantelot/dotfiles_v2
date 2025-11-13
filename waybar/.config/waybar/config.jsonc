@@ -24,10 +24,8 @@
     "group/tray-expander",
     "custom/bluetooth",
     "custom/network",
+    "custom/volume",
     "pulseaudio",
-    "volume",
-    "cpu",
-    "battery",
     "clock"
   ],
 
@@ -86,53 +84,36 @@
   },
   "custom/network": {
     "exec": "~/.config/waybar/scripts/network_status.sh",
-    "format": "{}",
     "interval": 5,
+    "return-type": "json",
     "on-click": "kitty -e nmtui",
     "tooltip": false,
-    "markup": false
+    "format": " "
   },
-
-  "cpu": {
+  "custom/volume": {
+    "exec": "~/.config/waybar/scripts/volume_status.sh",
     "interval": 5,
-    "format": "cpu",
-    "on-click": "$TERMINAL -e btop"
+    "return-type": "json",
+    "tooltip": false,
+    "format": " ",
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+  },
+  "pulseaudio": {
+    "format": "{volume}%",
+    "tooltip-format": "Playing at {volume}%",
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
   },
   "clock": {
     "format": "{:L%A %H:%M}",
     "format-alt": "{:L%d %B W%V %Y}",
     "tooltip": false
-  },
-  "network": {
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-    "format": "{icon}",
-    "format-wifi": "{icon}",
-    "format-ethernet": "󰀂",
-    "format-disconnected": "󰤮",
-    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-    "tooltip-format-disconnected": "Disconnected",
-    "interval": 3,
-    "spacing": 1
-  },
-  "pulseaudio": {
-    "format": "{icon}",
-    "on-click": "$TERMINAL --class=Wiremix -e wiremix",
-    "on-click-right": "pamixer -t",
-    "tooltip-format": "Playing at {volume}%",
-    "scroll-step": 5,
-    "format-muted": "",
-    "format-icons": {
-      "default": ["", "", ""]
-    }
-  },
-  "wireplumber": {
-    "format": "{volume}% {icon}",
-    "format-muted": "🔇",
-    "format-icons": ["🔈", "🔉", "🔊"],
-    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ +5%",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ -5%"
   },
 
   "custom/expand-icon": {
