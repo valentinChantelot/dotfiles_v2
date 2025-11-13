@@ -26,7 +26,8 @@
     "custom/network",
     "custom/volume",
     "pulseaudio",
-    "clock"
+    "clock#date",
+    "clock#time"
   ],
 
   "hyprland/workspaces": {
@@ -78,9 +79,9 @@
 
   "custom/bluetooth": {
     "format": " ",
-    "tooltip": "Manage Bluetooth devices",
     "on-click": "kitty -e bluetuith",
-    "interval": 0
+    "interval": 0,
+    "tooltip": false
   },
   "custom/network": {
     "exec": "~/.config/waybar/scripts/network_status.sh",
@@ -92,8 +93,8 @@
   },
   "custom/volume": {
     "exec": "~/.config/waybar/scripts/volume_status.sh",
-    "interval": 5,
     "return-type": "json",
+    "restart-interval": 0,
     "tooltip": false,
     "format": " ",
     "on-click": "pavucontrol",
@@ -110,9 +111,12 @@
     "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
     "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
   },
-  "clock": {
-    "format": "{:L%A %H:%M}",
-    "format-alt": "{:L%d %B W%V %Y}",
+  "clock#date": {
+    "format": "{:%d/%m}",
+    "tooltip-format": "{:%A %d %B}"
+  },
+  "clock#time": {
+    "format": "{:%H:%M}",
     "tooltip": false
   },
 

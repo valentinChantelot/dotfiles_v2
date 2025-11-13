@@ -8,6 +8,16 @@
   min-height: 24px;
 }
 
+#custom-network,
+#pulseaudio,
+#clock.date {
+  margin-right: 24px;
+}
+
+#clock.time {
+  margin-right: 10px;
+}
+
 #custom-bluetooth {
   background-image: url("../icons/bluetooth.svg");
 }
