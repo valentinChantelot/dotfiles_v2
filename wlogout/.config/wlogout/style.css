@@ -1,0 +1,59 @@
+@import url("./theme.css");
+
+* {
+  background-image: none;
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+}
+
+window {
+  background-color: @color-bg;
+}
+
+button {
+  background-color: @color-bg;
+  color: @color-text;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 16px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 48px;
+
+  margin: 10px 0;
+  min-width: 200px;
+  min-height: 80px;
+}
+
+button:focus,
+button:active,
+button:hover {
+  background-color: @elevation-3;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  outline-style: none;
+}
+
+#lock {
+  background-image: url("./icons/lock.svg");
+}
+
+#logout {
+  background-image: url("./icons/logout.svg");
+}
+
+#suspend {
+  background-image: url("./icons/eye-closed.svg");
+}
+
+#hibernate {
+  background-image: url("./icons/moon-star.svg");
+}
+
+#reboot {
+  background-image: url("./icons/reload.svg");
+}
+
+#shutdown {
+  background-image: url("./icons/shutdown.svg");
+}
