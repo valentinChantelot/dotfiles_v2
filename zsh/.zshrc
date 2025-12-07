@@ -4,7 +4,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Config
 HIST_STAMPS="dd.mm.yyyy"
-ZSH_THEME="gozilla"
+ZSH_THEME="godzilla"
 plugins=(
     git 
     zsh-autosuggestions 
