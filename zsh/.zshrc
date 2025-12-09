@@ -1,15 +1,15 @@
 export PATH="$HOME/.local/bin:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
 
-# Config
-HIST_STAMPS="dd.mm.yyyy"
-ZSH_THEME="godzilla"
+# Config OMZ
+ZSH_THEME="gozilla"
 plugins=(
     git 
     zsh-autosuggestions 
     zsh-syntax-highlighting
 )
+HIST_STAMPS="dd.mm.yyyy"
+source $ZSH/oh-my-zsh.sh
 
 # Aliases
 alias lt='eza --tree --level=2 --long --icons --git'
