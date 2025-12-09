@@ -9,7 +9,7 @@ Rectangle {
     id: container
     width: 640
     height: 480
-    color: config.color-bg
+    color: config.color_bg
 
     LayoutMirroring.enabled: Qt.locale().textDirection == Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
@@ -30,8 +30,8 @@ Rectangle {
         }
     }
 
-    FontLoader { id: mainFont; name: config.font_family }
-    FontLoader { id: btnFont; name: config.button_font_family }
+    FontLoader { id: mainFont; source: './assets/fonts/BigBlueTerm437NerdFont-Regular.ttf' }
+    FontLoader { id: btnFont; source: './assets/fonts/TerminessNerdFont-Regular.ttf' }
 
     // --- Sidebar ---
     Column {
@@ -45,7 +45,7 @@ Rectangle {
 
         SidebarItem {
             text: "sleep"
-            iconSource: "assets/eye-closed.svg"
+            iconSource: "./assets/eye-closed.svg"
             font.family: config.font_family
             font.pixelSize: config.font_size
             onClicked: sddm.suspend()
@@ -54,7 +54,7 @@ Rectangle {
 
         SidebarItem {
             text: "hibernate"
-            iconSource: "assets/moon-star.svg"
+            iconSource: "./assets/moon-star.svg"
             font.family: config.font_family
             font.pixelSize: config.font_size
             onClicked: sddm.hibernate()
@@ -63,7 +63,7 @@ Rectangle {
 
         SidebarItem {
             text: "reboot"
-            iconSource: "assets/reload.svg"
+            iconSource: "./assets/reload.svg"
             font.family: config.font_family
             font.pixelSize: config.font_size
             onClicked: sddm.reboot()
@@ -72,7 +72,7 @@ Rectangle {
 
         SidebarItem {
             text: "shutdown"
-            iconSource: "assets/start.svg"
+            iconSource: "./assets/start.svg"
             font.family: config.font_family
             font.pixelSize: config.font_size
             onClicked: sddm.powerOff()
@@ -95,7 +95,7 @@ Rectangle {
             Text {
                 id: timeLabel
                 text: Qt.formatTime(new Date(), "hh:mm")
-                color: config.color-text
+                color: config.color_text
                 font.family: config.font_family
                 font.pixelSize: config.font_size_clock
                 font.bold: true
@@ -105,7 +105,7 @@ Rectangle {
             Text {
                 id: dateLabel
                 text: Qt.formatDate(new Date(), "dd.MM.yyyy")
-                color: config.color-text
+                color: config.color_text
                 font.family: config.font_family
                 font.pixelSize: config.font_size_date
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -125,7 +125,7 @@ Rectangle {
         // -- Welcome title --
         Text {
             text: "> Welcome back"
-            color: config.color-text
+            color: config.color_text
             font.family: config.font_family
             font.pixelSize: config.font_size_title
             anchors.left: parent.left
@@ -139,14 +139,14 @@ Rectangle {
             Rectangle {
                 width: parent.width
                 height: 40
-                color: config.color-bg
+                color: config.color_bg
                 
                 RowLayout {
                     anchors.fill: parent
                     anchors.margins: 10
                     
                     Image {
-                        source: "assets/user.svg"
+                        source: "./assets/user.svg"
                         sourceSize: Qt.size(16, 16)
                         Layout.preferredWidth: 16
                         Layout.preferredHeight: 16
@@ -157,7 +157,7 @@ Rectangle {
                         text: userModel.lastUser
                         font.family: config.font_family
                         font.pixelSize: config.font_size
-                        color: config.color-text-text
+                        color: config.color_text
                         background: null
                         Layout.fillWidth: true
                         
@@ -169,14 +169,14 @@ Rectangle {
             Rectangle {
                 width: parent.width
                 height: 40
-                color: config.color-bg
+                color: config.color_bg
                 
                 RowLayout {
                     anchors.fill: parent
                     anchors.margins: 10
                     
                     Image {
-                        source: "assets/eye.svg"
+                        source: "./assets/eye.svg"
                         sourceSize: Qt.size(16, 16)
                         Layout.preferredWidth: 16
                         Layout.preferredHeight: 16
@@ -186,7 +186,7 @@ Rectangle {
                         id: passwordBox
                         font.family: config.font_family
                         font.pixelSize: config.font_size
-                        color: config.color-text-text
+                        color: config.color_text
                         echoMode: TextInput.Password
                         background: null
                         Layout.fillWidth: true
@@ -198,27 +198,30 @@ Rectangle {
                 }
             }
             
-            Button {
+            Rectangle {
                 id: loginBtn
-                text: "LOGIN"
-                anchors.right: parent.right
-                
-                contentItem: Text {
-                    text: loginBtn.text
+                width: 120
+                height: 40
+                radius: 6
+                color: mouseArea.pressed ? Qt.darker(config.color_bg) : config.color_bg
+                border.color: config.color_accent
+                border.width: 1
+
+                Text {
+                    anchors.centerIn: parent
+                    text: "LOGIN"
                     font.family: config.button_font_family
                     font.pixelSize: config.font_size
-                    color: config.color-text
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
+                    color: config.color_text
                 }
 
-                background: Rectangle {
-                    color: loginBtn.down ? Qt.darker(config.color-bg) : config.color-bg
-                    implicitWidth: 80
-                    implicitHeight: 30
+                MouseArea {
+                    id: mouseArea
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    onClicked: sddm.login(userBox.text, passwordBox.text, session.index)
+                    cursorShape: Qt.PointingHandCursor
                 }
-                
-                onClicked: sddm.login(userBox.text, passwordBox.text, session.index)
             }
         }
     }
@@ -233,8 +236,8 @@ Rectangle {
 
         SidebarItem {
             id: sessionButton
-            text: sessionModel.lastIndex >= 0 ? sessionModel.itemAt(sessionModel.lastIndex) : "Session"
-            iconSource: "assets/session.svg"
+            text: sessionModel.lastIndex >= 0 ? sessionModel.get(idx).name : "Session"
+            iconSource: "./assets/session.svg"
             font.family: config.font_family
             font.pixelSize: config.font_size
             width: 150
@@ -251,8 +254,8 @@ Rectangle {
                 padding: 10
                 
                 background: Rectangle {
-                    color: config.color-bg
-                    border.color: config.color-text
+                    color: config.color_bg
+                    border.color: config.color_text
                     border.width: 1
                 }
                 
@@ -272,8 +275,10 @@ Rectangle {
                         }
                         
                         Text {
-                            text: name
-                            color: config.color-text
+                            text: sessionModel.lastIndex >= 0
+                                ? sessionModel.get(idx).name
+                                : "Session"
+                            color: config.color_text
                             font.family: config.font_family
                             font.pixelSize: config.font_size
                             anchors.verticalCenter: parent.verticalCenter
@@ -286,7 +291,7 @@ Rectangle {
                             anchors.fill: parent
                             hoverEnabled: true
                             onClicked: {
-                                session.currentIndex = index
+                                sddm.setCurrentSession(index)
                                 sessionPopup.close()
                             }
                         }
@@ -297,7 +302,7 @@ Rectangle {
         
         SidebarItem {
             text: "virtual keyboard"
-            iconSource: "assets/keyboard.svg"
+            iconSource: "./assets/keyboard.svg"
             font.family: config.font_family
             font.pixelSize: config.font_size
             width: 180
@@ -336,13 +341,5 @@ Rectangle {
                 }
             }
         }
-    }
-
-    // Session Model (Hidden but used)
-    ComboBox {
-        id: session
-        model: sessionModel
-        currentIndex: sessionModel.lastIndex
-        visible: false
     }
 }
