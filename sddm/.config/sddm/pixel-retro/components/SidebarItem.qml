@@ -17,7 +17,7 @@ Item {
         spacing: 15
 
         Image {
-            source: root.iconSource
+            source: Qt.resolvedUrl(root.iconSource)
             sourceSize.width: 24
             sourceSize.height: 24
             Layout.preferredWidth: 24
