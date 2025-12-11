@@ -1,12 +1,13 @@
 import QtQuick 2.0
-import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 
 Item {
     id: root
+
     property string text: ""
     property string iconSource: ""
-    property font font
+    property string fontFamily: ""
+    property int fontSize: 14
     signal clicked()
 
     width: 200
@@ -14,7 +15,7 @@ Item {
 
     RowLayout {
         anchors.fill: parent
-        spacing: 15
+        spacing: 12
 
         Image {
             source: Qt.resolvedUrl(root.iconSource)
@@ -27,11 +28,13 @@ Item {
         }
 
         Text {
+            id: textEl
             text: root.text
             color: "white"
-            font: root.font
-            Layout.fillWidth: true
+            font.family: root.fontFamily
+            font.pixelSize: root.fontSize
             verticalAlignment: Text.AlignVCenter
+            Layout.fillWidth: true
         }
     }
 
@@ -40,7 +43,8 @@ Item {
         cursorShape: Qt.PointingHandCursor
         onClicked: root.clicked()
         hoverEnabled: true
-        onEntered: parent.opacity = 0.7
-        onExited: parent.opacity = 1.0
+
+        onEntered: root.opacity = 0.7
+        onExited: root.opacity = 1.0
     }
 }
