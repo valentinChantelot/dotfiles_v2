@@ -68,264 +68,198 @@ Rectangle {
     }
 
     // --- Main Content ---
-    Column {
-        id: mainContent
-        anchors.centerIn: parent
-        width: 400
-        spacing: 30
+    // Column {
+    //     id: mainContent
+    //     anchors.centerIn: parent
+    //     width: 400
+    //     spacing: 30
 
-        // -- Clock --
-        Column {
-            spacing: 5
-            anchors.horizontalCenter: parent.horizontalCenter
+    //     // -- Clock --
+    //     Column {
+    //         spacing: 5
+    //         anchors.horizontalCenter: parent.horizontalCenter
             
-            Text {
-                id: timeLabel
-                text: Qt.formatTime(new Date(), "hh:mm")
-                color: config.color_text
-                font.family: config.font_family
-                font.pixelSize: config.font_size_clock
-                font.bold: true
-                anchors.horizontalCenter: parent.horizontalCenter
-            }
+    //         Text {
+    //             id: timeLabel
+    //             text: Qt.formatTime(new Date(), "hh:mm")
+    //             color: config.color_text
+    //             font.family: config.font_family
+    //             font.pixelSize: config.font_size_clock
+    //             font.bold: true
+    //             anchors.horizontalCenter: parent.horizontalCenter
+    //         }
             
-            Text {
-                id: dateLabel
-                text: Qt.formatDate(new Date(), "dd.MM.yyyy")
-                color: config.color_text
-                font.family: config.font_family
-                font.pixelSize: config.font_size_date
-                anchors.horizontalCenter: parent.horizontalCenter
-            }
+    //         Text {
+    //             id: dateLabel
+    //             text: Qt.formatDate(new Date(), "dd.MM.yyyy")
+    //             color: config.color_text
+    //             font.family: config.font_family
+    //             font.pixelSize: config.font_size_date
+    //             anchors.horizontalCenter: parent.horizontalCenter
+    //         }
 
-            Timer {
-                interval: 1000
-                repeat: true
-                running: true
-                onTriggered: {
-                    timeLabel.text = Qt.formatTime(new Date(), "hh:mm")
-                    dateLabel.text = Qt.formatDate(new Date(), "dd.MM.yyyy")
-                }
+    //         Timer {
+    //             interval: 1000
+    //             repeat: true
+    //             running: true
+    //             onTriggered: {
+    //                 timeLabel.text = Qt.formatTime(new Date(), "hh:mm")
+    //                 dateLabel.text = Qt.formatDate(new Date(), "dd.MM.yyyy")
+    //             }
+    //         }
+    //     }
+
+    //     // -- Welcome title --
+    //     Text {
+    //         text: "> Welcome back"
+    //         color: config.color_text
+    //         font.family: config.font_family
+    //         font.pixelSize: config.font_size_title
+    //         anchors.left: parent.left
+    //     }
+
+    //     // -- Login form --
+    //     Column {
+    //         width: parent.width
+    //         spacing: 15
+
+    //         Rectangle {
+    //             width: parent.width
+    //             height: 40
+    //             color: config.color_bg
+                
+    //             RowLayout {
+    //                 anchors.fill: parent
+    //                 anchors.margins: 10
+                    
+    //                 Image {
+    //                     source: "./assets/user.svg"
+    //                     sourceSize: Qt.size(16, 16)
+    //                     Layout.preferredWidth: 16
+    //                     Layout.preferredHeight: 16
+    //                 }
+                    
+    //                 TextField {
+    //                     id: userBox
+    //                     text: userModel.lastUser
+    //                     font.family: config.font_family
+    //                     font.pixelSize: config.font_size
+    //                     color: config.color_text
+    //                     background: null
+    //                     Layout.fillWidth: true
+                        
+    //                     KeyNavigation.tab: passwordBox
+    //                 }
+    //             }
+    //         }
+
+    //         Rectangle {
+    //             width: parent.width
+    //             height: 40
+    //             color: config.color_bg
+                
+    //             RowLayout {
+    //                 anchors.fill: parent
+    //                 anchors.margins: 10
+                    
+    //                 Image {
+    //                     source: "./assets/eye.svg"
+    //                     sourceSize: Qt.size(16, 16)
+    //                     Layout.preferredWidth: 16
+    //                     Layout.preferredHeight: 16
+    //                 }
+                    
+    //                 TextField {
+    //                     id: passwordBox
+    //                     font.family: config.font_family
+    //                     font.pixelSize: config.font_size
+    //                     color: config.color_text
+    //                     echoMode: TextInput.Password
+    //                     background: null
+    //                     Layout.fillWidth: true
+    //                     focus: true
+                        
+    //                     onAccepted: sddm.login(userBox.text, passwordBox.text, session.index)
+    //                     KeyNavigation.tab: loginBtn
+    //                 }
+    //             }
+    //         }
+            
+    //         Rectangle {
+    //             id: loginBtn
+    //             width: 120
+    //             height: 40
+    //             radius: 6
+    //             color: mouseArea.pressed ? Qt.darker(config.color_bg) : config.color_bg
+    //             border.color: config.color_accent
+    //             border.width: 1
+
+    //             Text {
+    //                 anchors.centerIn: parent
+    //                 text: "LOGIN"
+    //                 font.family: config.button_font_family
+    //                 font.pixelSize: config.font_size
+    //                 color: config.color_text
+    //             }
+
+    //             MouseArea {
+    //                 id: mouseArea
+    //                 anchors.fill: parent
+    //                 hoverEnabled: true
+    //                 onClicked: sddm.login(userBox.text, passwordBox.text, session.index)
+    //                 cursorShape: Qt.PointingHandCursor
+    //             }
+    //         }
+    //     }
+    // }
+
+    // // --- Footer ---
+    Row {
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.margins: 40
+        spacing: 20
+
+        SidebarItem {
+            text: "virtual keyboard"
+            iconSource: "../assets/keyboard.svg"
+
+            fontFamily: config.font_family
+            fontSize: config.font_size
+            width: 180
+
+            onClicked: virtualKeyboard.visible = !virtualKeyboard.visible
+        }
+    }
+
+    // --- Virtual Keyboard ---
+    InputPanel {
+        id: virtualKeyboard
+        z: 99
+        x: 0
+        y: parent.height - height
+        width: parent.width
+        visible: false
+        
+        states: State {
+            name: "visible"
+            when: virtualKeyboard.active
+            PropertyChanges {
+                target: virtualKeyboard
+                y: parent.height - virtualKeyboard.height
             }
         }
-
-        // -- Welcome title --
-        Text {
-            text: "> Welcome back"
-            color: config.color_text
-            font.family: config.font_family
-            font.pixelSize: config.font_size_title
-            anchors.left: parent.left
-        }
-
-        // -- Login form --
-        Column {
-            width: parent.width
-            spacing: 15
-
-            Rectangle {
-                width: parent.width
-                height: 40
-                color: config.color_bg
-                
-                RowLayout {
-                    anchors.fill: parent
-                    anchors.margins: 10
-                    
-                    Image {
-                        source: "./assets/user.svg"
-                        sourceSize: Qt.size(16, 16)
-                        Layout.preferredWidth: 16
-                        Layout.preferredHeight: 16
-                    }
-                    
-                    TextField {
-                        id: userBox
-                        text: userModel.lastUser
-                        font.family: config.font_family
-                        font.pixelSize: config.font_size
-                        color: config.color_text
-                        background: null
-                        Layout.fillWidth: true
-                        
-                        KeyNavigation.tab: passwordBox
-                    }
-                }
-            }
-
-            Rectangle {
-                width: parent.width
-                height: 40
-                color: config.color_bg
-                
-                RowLayout {
-                    anchors.fill: parent
-                    anchors.margins: 10
-                    
-                    Image {
-                        source: "./assets/eye.svg"
-                        sourceSize: Qt.size(16, 16)
-                        Layout.preferredWidth: 16
-                        Layout.preferredHeight: 16
-                    }
-                    
-                    TextField {
-                        id: passwordBox
-                        font.family: config.font_family
-                        font.pixelSize: config.font_size
-                        color: config.color_text
-                        echoMode: TextInput.Password
-                        background: null
-                        Layout.fillWidth: true
-                        focus: true
-                        
-                        onAccepted: sddm.login(userBox.text, passwordBox.text, session.index)
-                        KeyNavigation.tab: loginBtn
-                    }
-                }
-            }
-            
-            Rectangle {
-                id: loginBtn
-                width: 120
-                height: 40
-                radius: 6
-                color: mouseArea.pressed ? Qt.darker(config.color_bg) : config.color_bg
-                border.color: config.color_accent
-                border.width: 1
-
-                Text {
-                    anchors.centerIn: parent
-                    text: "LOGIN"
-                    font.family: config.button_font_family
-                    font.pixelSize: config.font_size
-                    color: config.color_text
-                }
-
-                MouseArea {
-                    id: mouseArea
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    onClicked: sddm.login(userBox.text, passwordBox.text, session.index)
-                    cursorShape: Qt.PointingHandCursor
+        transitions: Transition {
+            from: ""
+            to: "visible"
+            reversible: true
+            ParallelAnimation {
+                NumberAnimation {
+                    properties: "y"
+                    duration: 250
+                    easing.type: Easing.InOutQuad
                 }
             }
         }
     }
-
-    // // --- Footer ---
-    // Row {
-    //     anchors.bottom: parent.bottom
-    //     anchors.left: parent.left
-    //     anchors.margins: 40
-    //     spacing: 20
-    //     z: 100 // ensure popup is above other elements
-
-    //     SidebarItem {
-    //         id: sessionButton
-    //         text: sddm.session
-    //         iconSource: "../assets/audio-device.svg"
-
-    //         font.family: config.font_family
-    //         font.pixelSize: config.font_size
-    //         width: 180
-
-    //         onClicked: sessionPopup.open()
-
-    //         Popup {
-    //             id: sessionPopup
-    //             y: -height - 10
-    //             width: 240
-    //             height: Math.min(sessionListView.contentHeight + 20, 300)
-    //             padding: 10
-
-    //             background: Rectangle {
-    //                 color: config.color_bg
-    //                 border.color: config.color_text
-    //                 border.width: 1
-    //             }
-
-    //             ListView {
-    //                 id: sessionListView
-    //                 anchors.fill: parent
-    //                 model: sessionModel
-    //                 clip: true
-
-    //                 delegate: Item {
-    //                     width: parent.width
-    //                     height: 32
-
-    //                     Rectangle {
-    //                         anchors.fill: parent
-    //                         color: mouseArea.containsMouse ? Qt.darker(config.color_bg, 1.2)
-    //                                                     : "transparent"
-    //                     }
-
-    //                     Text {
-    //                         text: name
-    //                         color: config.color_text
-    //                         font.family: config.font_family
-    //                         font.pixelSize: config.font_size
-    //                         anchors.verticalCenter: parent.verticalCenter
-    //                         anchors.left: parent.left
-    //                         anchors.leftMargin: 10
-    //                     }
-
-    //                     MouseArea {
-    //                         id: mouseArea
-    //                         anchors.fill: parent
-    //                         hoverEnabled: true
-
-    //                         onClicked: {
-    //                             sddm.setCurrentSession(index)
-    //                             sessionPopup.close()
-    //                         }
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-
-    //     SidebarItem {
-    //         text: "virtual keyboard"
-    //         iconSource: "../assets/keyboard.svg"
-
-    //         font.family: config.font_family
-    //         font.pixelSize: config.font_size
-    //         width: 180
-
-    //         onClicked: virtualKeyboard.visible = !virtualKeyboard.visible
-    //     }
-    // }
-
-    // // --- Virtual Keyboard ---
-    // InputPanel {
-    //     id: virtualKeyboard
-    //     z: 99
-    //     x: 0
-    //     y: parent.height - height
-    //     width: parent.width
-    //     visible: false
-        
-    //     states: State {
-    //         name: "visible"
-    //         when: virtualKeyboard.active
-    //         PropertyChanges {
-    //             target: virtualKeyboard
-    //             y: parent.height - virtualKeyboard.height
-    //         }
-    //     }
-    //     transitions: Transition {
-    //         from: ""
-    //         to: "visible"
-    //         reversible: true
-    //         ParallelAnimation {
-    //             NumberAnimation {
-    //                 properties: "y"
-    //                 duration: 250
-    //                 easing.type: Easing.InOutQuad
-    //             }
-    //         }
-    //     }
-    // }
 }
