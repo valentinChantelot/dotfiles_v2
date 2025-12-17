@@ -232,7 +232,7 @@ Rectangle {
         }
     }
 
-    // --- Virtual Keyboard ---
+    // --- Virtual keyboard ---
     InputPanel {
         id: virtualKeyboard
         z: 99
